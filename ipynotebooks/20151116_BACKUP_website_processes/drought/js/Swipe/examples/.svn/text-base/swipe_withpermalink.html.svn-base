@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel=stylesheet type=text/css href=../../../build/api.css>
+    <link rel=stylesheet type=text/css href=../../Permalink/css/permalink-panel.css>
+    <link rel=stylesheet type=text/css href=../css/swipe.css>
+    <style>
+        body {
+            font-family: verdana, times, sans-serif;
+            font-size: 100%;
+        }
+
+        #map {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript" src="../../../lib/ext/Ext/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="../../../lib/ext/Ext/ext-all-debug.js"></script>
+<script type="text/javascript" src="../../../lib/openlayers/lib/OpenLayers.js"></script>
+<script type="text/javascript" src="../../../lib/geoext/lib/GeoExt.js"></script>
+<script type="text/javascript" src="../../../lib/ext/Ext/src/ext-core/examples/jsonp/jsonp.js"></script>
+<script type="text/javascript" src="../../GeoAdmin.js"></script>
+<script type="text/javascript" src="../../Map/lib/Map.js"></script>
+<script type="text/javascript" src="../../Map/lib/MapPanel.js"></script>
+<script type="text/javascript" src="../../Layers/lib/Layers.js"></script>
+<script type="text/javascript" src="../../Map/lib/OverviewMap.js"></script>
+<script type="text/javascript" src="../../Layers/lib/VoidLayer.js"></script>
+<script type="text/javascript" src="../../Permalink/lib/PermalinkProvider.js"></script>
+<script type="text/javascript" src="../../Permalink/lib/PermalinkField.js"></script>
+<script type="text/javascript" src="../../Permalink/lib/PermalinkPanel.js"></script>
+<script type="text/javascript" src="../../Permalink/lib/Permalink.js"></script>
+<script type="text/javascript" src="../../Permalink/lib/MailPanel.js"></script>
+<script type="text/javascript" src="../../Permalink/lib/MailWindow.js"></script>
+<script type="text/javascript" src="../lib/Swipe.js"></script>
+<script type="text/javascript" src="swipe_withpermalink.js"></script>
+</body>
+</html>

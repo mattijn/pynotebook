@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor version="1.0.0" 
+    xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd" 
+    xmlns="http://www.opengis.net/sld" 
+    xmlns:ogc="http://www.opengis.net/ogc" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <NamedLayer>
+    <Name>map</Name>
+    <UserStyle>
+      <Title>SLD Cook Book: Many color gradient</Title>
+      <FeatureTypeStyle>
+        <Rule>
+          <RasterSymbolizer>
+            <Opacity>1.0</Opacity>
+            <ColorMap type="classes">
+              <!--<ColorMapEntry color="#FFFFFF" quantity="0"   label="unknown"  opacity="0" />-->
+              <ColorMapEntry color="#FFFF00" quantity="1"   label="unknown"  opacity="0" />
+              <ColorMapEntry color="#A35600" quantity="28.3"   label=" " />
+              <ColorMapEntry color="#D89A71" quantity="56.6"  label="-175" />
+              <ColorMapEntry color="#ECD9C8" quantity="85"  label="-150:-125"/>
+              <ColorMapEntry color="#DEDEE0" quantity="113.3"  label="-125:-100"/>
+              <ColorMapEntry color="#74FE75" quantity="141.6" label="-100:-75"/>
+              <ColorMapEntry color="#87DE00" quantity="170" label="-75:-50"/>
+              <ColorMapEntry color="#4FB94B" quantity="198.3" label="-50:-25"/>
+              <ColorMapEntry color="#178A49" quantity="226.6" label="25:50"/>
+              <ColorMapEntry color="#004642" quantity="255" label="50:75"/>
+
+            </ColorMap>
+          </RasterSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>
+

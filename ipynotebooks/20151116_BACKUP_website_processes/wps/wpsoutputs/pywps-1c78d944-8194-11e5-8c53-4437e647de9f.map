@@ -1,0 +1,102 @@
+MAP
+  CONFIG "MS_ERRORFILE" "/var/www/html/wps/pywps/mapserver.log"
+  DEBUG 5
+  EXTENT -20037508.34 -20037508.34 20037508.34 20037508.34
+  FONTSET "/usr/share/fonts/truetype/msttcorefonts/fonts.txt"
+  IMAGETYPE "png"
+  NAME "WPS_TCI_DI_CAL-pywps-1c78d944-8194-11e5-8c53-4437e647de9f"
+  SIZE -1 -1
+  STATUS ON
+  UNITS METERS
+
+  OUTPUTFORMAT
+    NAME "png"
+    MIMETYPE "image/png"
+    DRIVER "AGG/PNG"
+    EXTENSION "png"
+    IMAGEMODE RGB
+    TRANSPARENT FALSE
+  END # OUTPUTFORMAT
+
+  PROJECTION
+    "init=epsg:900913"
+  END # PROJECTION
+  LEGEND
+    KEYSIZE 22 24
+    KEYSPACING 10 0
+    LABEL
+      FONT "arial"
+      SIZE 11
+      COLOR 1 1 1
+      OFFSET 0 6
+      SHADOWSIZE 0 0
+      TYPE TRUETYPE
+    END # LABEL
+    STATUS ON
+    TRANSPARENT TRUE
+  END # LEGEND
+
+  QUERYMAP
+    SIZE -1 -1
+    STATUS OFF
+    STYLE HILITE
+  END # QUERYMAP
+
+  SCALEBAR
+    INTERVALS 4
+    LABEL
+      SIZE MEDIUM
+      OFFSET 0 0
+      SHADOWSIZE 1 1
+      TYPE BITMAP
+    END # LABEL
+    SIZE 200 3
+    STATUS OFF
+    UNITS MILES
+  END # SCALEBAR
+
+  WEB
+    METADATA
+      "wcs_label"	"TCI calculation process"
+      "wms_onlineresource"	"http://localhost/cgi-bin/mapserv?map=/var/www/html/wps/wpsoutputs/pywps-1c78d944-8194-11e5-8c53-4437e647de9f.map"
+      "ows_country"	"eu"
+      "ows_keywordlist"	"GRASS,GIS,WPS"
+      "wms_abstract"	"See http://pywps.wald.intevation.org and http://www.opengeospatial.org/standards/wps"
+      "ows_city"	"City"
+      "ows_contactperson"	"Your Name"
+      "ows_contactposition"	"Your Position"
+      "ows_role"	"Your role"
+      "ows_enable_request"	"*"
+      "ows_contactorganization"	"Your Company Name"
+      "ows_accessconstraints"	"none"
+      "ows_title"	"PyWPS Server"
+      "ows_fees"	"None"
+      "wcs_abstract"	"See http://pywps.wald.intevation.org and http://www.opengeospatial.org/standards/wps"
+      "ows_contactelectronicmailaddress"	"login@server.org"
+      "wfs_abstract"	"See http://pywps.wald.intevation.org and http://www.opengeospatial.org/standards/wps"
+      "ows_address"	"Street"
+      "ows_postcode"	"000 00"
+    END # METADATA
+  END # WEB
+
+  LAYER
+    DATA "/var/www/html/wps/wpsoutputs/map-1c78d944-8194-11e5-8c53-4437e647de9f.tif"
+    GROUP "WPS_TCI_DI_CAL"
+    METADATA
+      "wcs_label"	"Output TCI image"
+      "wcs_rangeset_name"	"Range 1"
+      "wcs_rangeset_label"	"My Label"
+      "ows_srs"	"EPSG:4326 EPSG:102067 EPSG:3059 EPSG:900913"
+      "group_abstract"	"This process intend to calculate the Temperature Condition index (TCI) for a specific area.."
+    END # METADATA
+    NAME "map"
+    PROJECTION
+      "init=epsg:4326"
+    END # PROJECTION
+    STATUS OFF
+    TILEITEM "location"
+    TYPE RASTER
+    UNITS METERS
+  END # LAYER
+
+END # MAP

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel=stylesheet type=text/css href=../../../build/api.css>
+    <link rel=stylesheet type=text/css href=../css/swipe.css>
+</head>
+<body onload="init()">
+<script type="text/javascript" src="../../../lib/ext/Ext/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="../../../lib/ext/Ext/ext-all-debug.js"></script>
+<script type="text/javascript" src="../../../lib/ext/Ext/src/ext-core/examples/jsonp/jsonp.js"></script>
+<script type="text/javascript" src="../../../lib/openlayers/lib/OpenLayers.js"></script>
+<script type="text/javascript" src="../../../lib/geoext/lib/GeoExt.js"></script>
+<script type="text/javascript" src="../../../lib/proj4js/proj4js/lib/proj4js.js"></script>
+<script type="text/javascript" src="../../../lib/proj4js/proj4js/lib/defs/EPSG21781.js"></script>
+<script type="text/javascript" src="../../Map/lib/EPSG2056.js"></script>
+<script type="text/javascript" src="../../GeoAdmin.js"></script>
+<script type="text/javascript" src="../../Map/lib/Map.js"></script>
+<script type="text/javascript" src="../../Map/lib/MapPanel.js"></script>
+<script type="text/javascript" src="../../Layers/lib/Layers.js"></script>
+<script type="text/javascript" src="../../Map/lib/OverviewMap.js"></script>
+<script type="text/javascript" src="../../Layers/lib/VoidLayer.js"></script>
+<script type="text/javascript" src="../../Permalink/lib/PermalinkProvider.js"></script>
+<script type="text/javascript" src="../../Permalink/lib/Permalink.js"></script>
+<script type="text/javascript" src="../lib/Swipe.js"></script>
+<script type="text/javascript" src="swipe.js"></script>
+<div id="mymap" style="float: left; width:100%;height:600px;border:1px solid grey;padding: 0 0 0 0;"></div>
+</body>
+</html>

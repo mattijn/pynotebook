@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor version="1.0.0" 
+    xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd" 
+    xmlns="http://www.opengis.net/sld" 
+    xmlns:ogc="http://www.opengis.net/ogc" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <NamedLayer>
+    <Name>map</Name>
+    <UserStyle>
+      <Title>SLD Cook Book: Many color gradient</Title>
+      <FeatureTypeStyle>
+        <Rule>
+          <RasterSymbolizer>
+            <Opacity>1.0</Opacity>            
+            <ColorMap type="classes">
+              <!--<ColorMapEntry color="#FFFFFF" quantity="0"   label="unknown"  opacity="0" />-->
+              <ColorMapEntry color="#5A005A" quantity="239" label="175"/>
+              <ColorMapEntry color="#960096" quantity="223" label=""/>
+              <ColorMapEntry color="#C800C8" quantity="207" label="125"/>
+              <ColorMapEntry color="#7D00E1" quantity="191" label=""/>
+              <ColorMapEntry color="#3200E1" quantity="175" label="75"/>
+              <ColorMapEntry color="#0064C8" quantity="159" label=""/>
+              <ColorMapEntry color="#00C8F0" quantity="143" label="25"/>
+              <ColorMapEntry color="#BEFFFF" quantity="127" label=""/>
+              <ColorMapEntry color="#B4FFBE" quantity="111" label="-25"/>
+              <ColorMapEntry color="#64E100" quantity="95" label=""/>
+              <ColorMapEntry color="#C8E100" quantity="79" label="-75"/>
+              <ColorMapEntry color="#FFE100" quantity="63"  label=""/>
+              <ColorMapEntry color="#FFFF00" quantity="47"  label="-125"/>
+              <ColorMapEntry color="#FFAA00" quantity="31"  label="" />
+              <ColorMapEntry color="#FF6400" quantity="15"   label="-175" />
+              <ColorMapEntry color="#c80000" quantity="1"   label=""/>
+            </ColorMap>
+          </RasterSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>
+

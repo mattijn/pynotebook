@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+    </title>
+</head>
+
+<body>
+    <p>
+    </p>
+
+
+    <p>
+    </p>
+
+
+    <div id="ts_latlon" style="width: 100%; font-size:0.9em !important;">
+        <table>
+            <tr>
+                <td>You clicked near:</td>
+
+                <td>Lon:</td>
+
+                <td style="width:67px">
+                    <div id="ts_lon_click">
+                    </div>
+                </td>
+
+                <td>Lat:</td>
+
+                <td style="width:67px">
+                    <div id="ts_lat_click">
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr style="color: silver;">
+                <td>Mouse position:</td>
+
+                <td>Lon:</td>
+
+                <td>
+                    <div id="ts_lon_mouse">
+                    </div>
+                </td>
+
+                <td>Lat:</td>
+
+                <td>
+                    <div id="ts_lat_mouse">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <p>
+    </p>
+
+<form id="pixForm">
+  <div id="radio">
+<table style="width:100%; font-size:0.9em;">
+<tr><td colspan=3>Select pixel or grid</td></tr>
+<tr>
+<td align="center"><input type="radio" id="radio1" class="pix_off_in" name="pixelsize" value="1x1" checked="checked"><label for="radio1"><div id="c1x1"></div></label></td>
+<td align="center"><input type="radio" id="radio2" class="pix_off_in" name="pixelsize" value="2x2" ><label for="radio2"><div id="c2x2"></div></label></td>
+<td align="center"><input type="radio" id="radio3" class="pix_off_in" name="pixelsize" value="3x3" ><label for="radio3"><div id="c3x3"></div></label></td>
+</tr>
+<tr>
+<td align="center">single pixel</td>
+<td align="center">0.05x0.05 deg</td>
+<td align="center">0.15x0.15 deg </td>
+</tr>
+</table>
+  </div>
+</form>
+
+    <p>
+    </p>
+
+
+    <div class="modal_chart" id="modalpanel">
+        <div id="drought-derived-chart">
+        </div>
+		
+        <div id="hydrology-chart">
+        </div>
+
+        <div id="vegetation-chart">
+        </div>
+
+        <div id="meteorology-chart">
+        </div>		
+    </div>
+
+
+    <form id="ts_form" name="ts_form">
+        <table style="width:100%">
+			<!-- DERIVED DROUGHT INDICES ROWS-->
+            <tr>
+                <td><input id='ts_drought' class="radio_ts_data" name="ts_selector" type="radio" value=
+                "ts_drought">
+                </td>
+
+                <td>Derived Drought Indices</td>
+
+                <td><img id='ts_drought_refresh' src='js/img/refresh.png' style="width:20px">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                </td>
+
+                <td id='ts_drought_options' style="width: 100%; font-size:0.9em !important; background-color: #F2F2F2;">
+
+<table>
+ <tr >
+  <td>From: </td>
+  <td style='width:90px' id='metadata_gpcp_from_date'></td>
+  <td >To: </td>
+  <td id='metadata_gpcp_to_date'></td>
+ </tr>
+</table>
+<table>
+ <tr>
+  <td colspan=2>Temporal resolution: </td>
+  <td colspan=2 id='metadata_gpcp_temp_res'></td>
+ </tr>
+ <tr>
+  <td>Lonmin: </td>
+  <td id='metadata_gpcp_lonmin' >  </td>
+  <td>lonmax: </td>
+  <td id='metadata_gpcp_lonmax'>  </td>
+ </tr>
+ <tr >
+  <td >latmin: </td>
+  <td id='metadata_gpcp_latmin'> </td>
+  <td >Latmax: </td>
+  <td id='metadata_gpcp_latmax'> </td>
+ </tr>
+ <tr >
+  <td colspan=2 >Spatial resolution: </td>
+  <td colspan=2 id='metadata_gpcp_spat_res' > </td>
+ </tr>
+</table>
+
+
+					<br>
+
+					Settings NVAI/NTAI/VCI/TCI/VHI
+					<table>
+
+					<tr>
+						<td>Use pyhants </td>
+						<td><select id='pyhants_yes_no_nvai'>
+<option name='pyhantsyn' value=0>No Pyhants</option>
+<option name='pyhantsyn' value=1>Yes Pyhants</option>
+</select></td>
+					</tr>
+
+
+					<tr>
+						<td>No. freq (/year): </td>
+						<td><input type='number' id='number_of_frequencies_nvai' value='4' min='1' max='50'></input></td>
+					</tr>
+					<tr>
+						<td>Type of outlier: </td>
+						<td>
+						<select id="type_of_outliers_nvai">							
+							<option name="choice1" value='Hi'>High values</option>
+							<option name="choice1" value='Lo'>Low values</option>
+							<option name="choice1" value='None'>No outliers</option>
+						</select>					
+						</td>
+					</tr>
+					</table>
+</td>
+
+                <td>
+                </td>
+
+
+            </tr>
+
+
+            
+
+			<!-- HYDROLOGY ROWS-->
+            <tr>
+                <td><input id='ts_hydro' class="radio_ts_data" name="ts_selector" disabled="disabled" type="radio" value="ts_hydro">
+                </td>
+
+                <td>Hydrology</td>
+
+                <td><img id='ts_hydro_refresh' src='js/img/refresh.png' style="width:20px">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                </td>
+
+                <td id='ts_hydro_options' style="width: 100%; font-size:0.9em !important; background-color: #F2F2F2;">
+					Settings PyHANTS
+					<table>
+					<tr>
+						<td>No. frequencies: </td>
+						<td><input type='number' id='number_of_frequencies_hydrology' value='4' min='1' max='50'></input></td>
+					</tr>
+					<tr>
+						<td>Type of outlier: </td>
+						<td>
+						<select id="type_of_outliers_hydrology">							
+							<option name="choice1" value=1>High values</option>
+							<option name="choice1" value=2>Low values</option>
+							<option name="choice1" value=0>No outliers</option>
+						</select>					
+						</td>
+					</tr>
+					</table>
+				</td>
+
+                <td>
+                </td>
+            </tr>
+            
+
+			<!-- VEGETATION ROWS-->
+            <tr>
+                <td><input id='ts_vegetation' class="radio_ts_data" name="ts_selector" type="radio" value=
+                "ts_vegetation">
+                </td>
+
+                <td>Vegetation</td>
+
+                <td><img id='ts_vegetation_refresh' src='js/img/refresh.png' style="width:20px">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                </td>
+
+                <td id='ts_vegetation_options' style="width: 100%; font-size:0.9em !important; background-color: #F2F2F2;">
+
+
+<table>
+ <tr >
+  <td>From: </td>
+  <td style='width:90px' id='metadata_modis_11c2_cov_from_date'></td>
+  <td >To: </td>
+  <td id='metadata_modis_11c2_cov_to_date'></td>
+ </tr>
+</table>
+<table>
+ <tr>
+  <td colspan=2>Temporal resolution: </td>
+  <td colspan=2 id='metadata_modis_11c2_cov_temp_res'></td>
+ </tr>
+ <tr>
+  <td>Lonmin: </td>
+  <td id='metadata_modis_11c2_cov_lonmin' >  </td>
+  <td>lonmax: </td>
+  <td id='metadata_modis_11c2_cov_lonmax'>  </td>
+ </tr>
+ <tr >
+  <td >latmin: </td>
+  <td id='metadata_modis_11c2_cov_latmin'> </td>
+  <td >Latmax: </td>
+  <td id='metadata_modis_11c2_cov_latmax'> </td>
+ </tr>
+ <tr >
+  <td colspan=2 >Spatial resolution: </td>
+  <td colspan=2 id='metadata_modis_11c2_cov_spat_res' > </td>
+ </tr>
+</table>
+
+
+					<br>
+					Settings PyHANTS
+					<table>
+					<tr>
+						<td>No. freq (/year): </td>
+						<td><input type='number' id='number_of_frequencies' value='4' min='1' max='50'></input></td>
+					</tr>
+					<tr>
+						<td>Type of outlier: </td>
+						<td>
+						<select id="type_of_outliers">							
+							<option name="choice1" value=1>High values</option>
+							<option name="choice1" value=2>Low values</option>
+							<option name="choice1" value=0>No outliers</option>
+						</select>					
+						</td>
+					</tr>
+					</table>
+				</td>
+
+                <td>
+                </td>
+            </tr>
+            
+
+			<!-- METEOROLOGY ROWS-->
+            <tr>
+                <td><input id='ts_meteo' class="radio_ts_data" name="ts_selector" type="radio" value="ts_meteo">
+                </td>
+
+                <td>Meteorology</td>
+
+                <td><img id='ts_meteo_refresh' src='js/img/refresh.png' style="width:20px">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                </td>
+
+                <td id='ts_meteo_options' style="width: 100%; font-size:0.9em !important; background-color: #F2F2F2;">
+
+<table>
+ <tr >
+  <td>From: </td>
+  <td style='width:90px' id='metadata_modis_13c1_cov_from_date'></td>
+  <td >To: </td>
+  <td id='metadata_modis_13c1_cov_to_date'></td>
+ </tr>
+</table>
+<table>
+ <tr>
+  <td colspan=2>Temporal resolution: </td>
+  <td colspan=2 id='metadata_modis_13c1_cov_temp_res'></td>
+ </tr>
+ <tr>
+  <td>Lonmin: </td>
+  <td id='metadata_modis_13c1_cov_lonmin' >  </td>
+  <td>lonmax: </td>
+  <td id='metadata_modis_13c1_cov_lonmax'>  </td>
+ </tr>
+ <tr >
+  <td >latmin: </td>
+  <td id='metadata_modis_13c1_cov_latmin'> </td>
+  <td >Latmax: </td>
+  <td id='metadata_modis_13c1_cov_latmax'> </td>
+ </tr>
+ <tr >
+  <td colspan=2 >Spatial resolution: </td>
+  <td colspan=2 id='metadata_modis_13c1_cov_spat_res' > </td>
+ </tr>
+</table>
+
+
+					<br>
+
+					Settings PyHANTS
+					<table>
+					<tr>
+						<td>No. freq (/year): </td>
+						<td><input type='number' id='number_of_frequencies_meteorology' value='4' min='1' max='50'></input></td>
+					</tr>
+					<tr>
+						<td>Type of outlier: </td>
+						<td>
+						<select id="type_of_outliers_meteorology">							
+							<option name="choice1" value=1>High values</option>
+							<option name="choice1" value=2>Low values</option>
+							<option name="choice1" value=0>No outliers</option>
+						</select>					
+						</td>
+					</tr>
+					</table>
+				</td>
+
+                <td>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+    <p><script>
+
+  $(function() {
+    $( "#radio" ).buttonset();
+  });
+
+
+    // --- // --- // --- // --- // --- // --- // --- // --- //
+	
+    var drought_derived_chart;
+    var hydrology_chart;
+	var vegetation_chart;
+	var meteorology_chart;
+	var lonlat;
+    var size = new OpenLayers.Size(40);
+    var offset = new OpenLayers.Pixel(-15, -45);
+    var icon = new OpenLayers.Icon('./js/img/icon.png', size, offset);
+
+    function open_dialog_event() {
+		// Make sure the chart fits the dialog window
+		drought_derived_chart.reflow();
+		hydrology_chart.reflow();
+		vegetation_chart.reflow();
+		meteorology_chart.reflow();				
+    };
+	
+    function close_dialog_event() {
+		// Uncheck all radio buttons
+		$('.radio_ts_data').prop('checked', false);
+	document.getElementById("ts_drought_options").style.display = 'none';
+	document.getElementById("ts_hydro_options").style.display = 'none';
+	document.getElementById("ts_vegetation_options").style.display = 'none';
+	document.getElementById("ts_meteo_options").style.display = 'none';
+	document.getElementById("ts_drought_refresh").style.display = 'none';
+	document.getElementById("ts_hydro_refresh").style.display = 'none';
+	document.getElementById("ts_vegetation_refresh").style.display = 'none';
+	document.getElementById("ts_meteo_refresh").style.display = 'none';
+
+        selector = undefined;	
+
+    };	
+	
+    $('.modal_chart').dialog({
+    dialogClass: 'fixed-dialog',
+    resizable: false,
+    autoOpen: false,
+    modal: false,
+    open: open_dialog_event,
+	close: close_dialog_event
+    });
+		
+	
+    // --- // --- // --- // --- // --- // --- // --- // --- //
+	
+    document.getElementById("ts_drought_options").style.display = 'none';
+    document.getElementById("ts_hydro_options").style.display = 'none';
+    document.getElementById("ts_vegetation_options").style.display = 'none';
+    document.getElementById("ts_meteo_options").style.display = 'none';
+
+        document.getElementById("ts_drought_refresh").style.display = 'none';
+        document.getElementById("ts_hydro_refresh").style.display = 'none';
+        document.getElementById("ts_vegetation_refresh").style.display = 'none';
+        document.getElementById("ts_meteo_refresh").style.display = 'none';
+
+
+    var selector;
+    $('.radio_ts_data').on('change', function() {
+	
+	// Check lonlat exist
+	if (typeof lonlat == 'undefined') {
+		alert('Computer says no. First click on land to retrieve a coordinate.');
+		close_dialog_event();
+		return;
+	};
+	
+    selector = $('input[name="ts_selector"]:checked', '#ts_form').val()
+    if (selector == 'ts_drought') {
+        //Add Derived Drought Indices OPTIONS
+        console.log('di_options');	
+        $('#ts_drought_refresh').attr('src', './js/img/ls.gif');
+		
+        document.getElementById("ts_drought_options").style.display = 'block';
+
+        document.getElementById("ts_drought_refresh").style.display = 'block';
+        document.getElementById("ts_hydro_refresh").style.display = 'none';
+        document.getElementById("ts_vegetation_refresh").style.display = 'none';
+        document.getElementById("ts_meteo_refresh").style.display = 'none';
+
+        document.getElementById("ts_hydro_options").style.display = 'none';
+        document.getElementById("ts_vegetation_options").style.display = 'none';
+        document.getElementById("ts_meteo_options").style.display = 'none';
+		
+        $(".modal_chart").dialog("open");			
+		//Display right chart
+		document.getElementById("drought-derived-chart").style.display = 'block';
+		document.getElementById("hydrology-chart").style.display = 'none';
+		document.getElementById("vegetation-chart").style.display = 'none';
+		document.getElementById("meteorology-chart").style.display = 'none';
+
+		// Execute PyWPS to request the data
+		executeDroughtQuery(lonlat);
+                //executeNVAIQuery(lonlat); 
+		executeALLDIQuery(lonlat); 
+		
+    };
+    if (selector == 'ts_hydro') {
+        //Add Hydrology OPTIONS
+        console.log('hydro_options');
+        //$('#ts_hydro_refresh').attr('src', './js/img/ls.gif');
+
+        document.getElementById("ts_drought_options").style.display = 'none';
+        document.getElementById("ts_hydro_options").style.display = 'block';
+
+        document.getElementById("ts_drought_refresh").style.display = 'none';
+        document.getElementById("ts_hydro_refresh").style.display = 'block';
+        document.getElementById("ts_vegetation_refresh").style.display = 'none';
+        document.getElementById("ts_meteo_refresh").style.display = 'none';
+
+        document.getElementById("ts_vegetation_options").style.display = 'none';
+        document.getElementById("ts_meteo_options").style.display = 'none';
+        $(".modal_chart").dialog("open");
+		
+		//Display right chart
+		document.getElementById("drought-derived-chart").style.display = 'none';
+		document.getElementById("hydrology-chart").style.display = 'block';
+		document.getElementById("vegetation-chart").style.display = 'none';
+		document.getElementById("meteorology-chart").style.display = 'none';
+
+		// Execute PyWPS to request the data
+		//executeHydrologyQuery(lonlat);		
+		
+    };
+    if (selector == 'ts_vegetation') {
+        //Add Vegetation OPTIONS
+        console.log('vegetation_options');
+        $('#ts_vegetation_refresh').attr('src', './js/img/ls.gif');
+		
+
+        document.getElementById("ts_drought_options").style.display = 'none';
+        document.getElementById("ts_hydro_options").style.display = 'none';
+        document.getElementById("ts_vegetation_options").style.display = 'block';
+
+        document.getElementById("ts_drought_refresh").style.display = 'none';
+        document.getElementById("ts_hydro_refresh").style.display = 'none';
+        document.getElementById("ts_vegetation_refresh").style.display = 'block';
+        document.getElementById("ts_meteo_refresh").style.display = 'none';
+
+        document.getElementById("ts_meteo_options").style.display = 'none';
+        $(".modal_chart").dialog("open");
+		
+		//Display right chart
+		document.getElementById("drought-derived-chart").style.display = 'none';
+		document.getElementById("hydrology-chart").style.display = 'none';
+		document.getElementById("vegetation-chart").style.display = 'block';
+		document.getElementById("meteorology-chart").style.display = 'none';
+		
+		// Execute PyWPS to request the data
+		executeVegetationQuery(lonlat);
+				
+    };
+    if (selector == 'ts_meteo') {
+        //Add Meteorology OPTIONS
+        console.log('meteo_options');
+        $('#ts_meteo_refresh').attr('src', './js/img/ls.gif');
+
+        document.getElementById("ts_drought_options").style.display = 'none';
+        document.getElementById("ts_hydro_options").style.display = 'none';
+        document.getElementById("ts_vegetation_options").style.display = 'none';
+        document.getElementById("ts_meteo_options").style.display = 'block';
+
+        document.getElementById("ts_drought_refresh").style.display = 'none';
+        document.getElementById("ts_hydro_refresh").style.display = 'none';
+        document.getElementById("ts_vegetation_refresh").style.display = 'none';
+        document.getElementById("ts_meteo_refresh").style.display = 'block';
+
+        $(".modal_chart").dialog("open");
+		
+		//Display right chart
+		document.getElementById("drought-derived-chart").style.display = 'none';
+		document.getElementById("hydrology-chart").style.display = 'none';
+		document.getElementById("vegetation-chart").style.display = 'none';
+		document.getElementById("meteorology-chart").style.display = 'block';	
+
+		// Execute PyWPS to request the data
+		executeMeteorologyQuery(lonlat);		
+						
+    };
+    });
+	
+    // --- // --- // --- // --- // --- // --- // --- // --- //
+
+    var style = {
+       strokeColor: "#ffa500",
+       strokeOpacity: 1,
+       strokeWidth: 3,
+       fillColor: "#ffa500",
+       fillOpacity: 0.8
+    }; 
+
+
+    var selector;
+
+    $('.pix_off_in').on('change', function() {
+	var valPixsize = $('input[name=pixelsize]:checked', '#pixForm').val();
+	if (valPixsize == '1x1') {
+	    pixOffset = 0;
+	    window.OffsetPixel = 0;
+	} else if (valPixsize == '2x2') {
+	    pixOffset = 0.025;
+	    window.OffsetPixel = 4;
+	} else if (valPixsize == '3x3') {
+	    pixOffset = 0.075;
+	    window.OffsetPixel = 9;  
+	};
+
+	if (lonlat) {
+	    pixBox.destroyFeatures();
+            //markers.erase();
+	    map.setLayerIndex(pixBox,map.getNumLayers());
+            map.setLayerIndex(markers,map.getNumLayers());
+            //alert(lonlat.transform(fromProjection, toProjection));
+	    var ll = new OpenLayers.Geometry.Point(lonlat.lon,lonlat.lat).transform(fromProjection, toProjection);
+            markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(ll.lon,ll.lat), icon.clone()));    
+
+	    var p11 = new OpenLayers.Geometry.Point(lonlat.lon-pixOffset,lonlat.lat-pixOffset).transform(fromProjection, toProjection);
+	    var p12 = new OpenLayers.Geometry.Point(lonlat.lon+pixOffset,lonlat.lat-pixOffset).transform(fromProjection, toProjection);
+	    var p13 = new OpenLayers.Geometry.Point(lonlat.lon+pixOffset,lonlat.lat+pixOffset).transform(fromProjection, toProjection);
+	    var p14 = new OpenLayers.Geometry.Point(lonlat.lon-pixOffset,lonlat.lat+pixOffset).transform(fromProjection, toProjection);
+	    var p15 = new OpenLayers.Geometry.Point(lonlat.lon-pixOffset,lonlat.lat-pixOffset).transform(fromProjection, toProjection);
+
+	    var pnt=[];
+	    pnt.push(p11,p12,p13,p14,p15);
+	    var ln = new OpenLayers.Geometry.LinearRing(pnt);
+	    var pf = new OpenLayers.Feature.Vector(ln, null, style);
+
+	    pixBox.addFeatures([pf]);
+
+
+	};
+    });
+	
+    OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
+    defaultHandlerOptions: {
+        'single': true,
+        'double': false,
+        'pixelTolerance': 0,
+        'stopSingle': false,
+        'stopDouble': false
+    },
+    initialize: function(options) {
+        this.handlerOptions = OpenLayers.Util.extend({}, this.defaultHandlerOptions);
+        OpenLayers.Control.prototype.initialize.apply(this, arguments);
+        this.handler = new OpenLayers.Handler.Click(this, {
+            'click': this.trigger
+        }, this.handlerOptions);
+    },
+    trigger: function(e) {
+	// remove rectangle;
+	pixBox.destroyFeatures();
+        // First add marker on top
+	//alert(map.getNumLayers());	
+	map.setLayerIndex(pixBox,map.getNumLayers());
+	map.setLayerIndex(markers,map.getNumLayers());
+        markers.addMarker(new OpenLayers.Marker(map.getLonLatFromPixel(e.xy), icon));
+
+	var valPixsize = $('input[name=pixelsize]:checked', '#pixForm').val()
+	if (valPixsize == '1x1') {
+	    pixOffset = 0;
+	    window.OffsetPixel = 0;
+	} else if (valPixsize == '2x2') {
+	    pixOffset = 0.025;
+	    window.OffsetPixel = 4;
+	} else if (valPixsize == '3x3') {
+	    pixOffset = 0.075;
+	    window.OffsetPixel = 9;  
+	};
+
+        lonlat = map.getLonLatFromPixel(e.xy).transform(toProjection,
+            fromProjection);
+
+	var p11 = new OpenLayers.Geometry.Point(lonlat.lon-pixOffset,lonlat.lat-pixOffset).transform(fromProjection, toProjection);
+	var p12 = new OpenLayers.Geometry.Point(lonlat.lon+pixOffset,lonlat.lat-pixOffset).transform(fromProjection, toProjection);
+	var p13 = new OpenLayers.Geometry.Point(lonlat.lon+pixOffset,lonlat.lat+pixOffset).transform(fromProjection, toProjection);
+	var p14 = new OpenLayers.Geometry.Point(lonlat.lon-pixOffset,lonlat.lat+pixOffset).transform(fromProjection, toProjection);
+	var p15 = new OpenLayers.Geometry.Point(lonlat.lon-pixOffset,lonlat.lat-pixOffset).transform(fromProjection, toProjection);
+
+	var pnt=[];
+	pnt.push(p11,p12,p13,p14,p15);
+	var ln = new OpenLayers.Geometry.LinearRing(pnt);
+	var pf = new OpenLayers.Feature.Vector(ln, null, style);
+
+	pixBox.addFeatures([pf]);
+	//map.addLayer(vector);
+
+        console.log("You clicked near " + lonlat.lat + " N, " + lonlat.lon + " E");
+        OpenLayers.Util.getElement("ts_lon_click").innerHTML = lonlat.lon.toFixed(4);
+        OpenLayers.Util.getElement("ts_lat_click").innerHTML = lonlat.lat.toFixed(4);
+
+	// Check lonlat exist
+	if (typeof selector != 'undefined') {
+		if (selector == 'ts_drought') {
+                        $('#ts_drought_refresh').attr('src', './js/img/ls.gif');
+			// Execute PyWPS to request the data
+			executeDroughtQuery(lonlat);
+                        //executeNVAIQuery(lonlat); 
+			executeALLDIQuery(lonlat); 
+                };
+
+		if (selector == 'ts_vegetation') {
+                        $('#ts_vegetation_refresh').attr('src', './js/img/ls.gif');
+			// Execute PyWPS to request the data
+			executeVegetationQuery(lonlat);
+                };
+
+		//if (selector == 'ts_hydro') {
+                //        $('#ts_hydro_refresh').attr('src', './js/img/ls.gif');
+		//	// Execute PyWPS to request the data
+		//	executeHydrologyQuery(lonlat);
+                //};
+
+		if (selector == 'ts_meteo') {
+                        $('#ts_meteo_refresh').attr('src', './js/img/ls.gif');
+			// Execute PyWPS to request the data
+			executeMeteorologyQuery(lonlat);
+                };
+
+	};
+
+    }
+    });
+    var click = new OpenLayers.Control.Click();
+    map.addControl(click);
+    click.activate();
+	
+    // --- // --- // --- // --- // --- // --- // --- // --- //
+	
+    map.events.register("mousemove", map, function(e) {
+    var position = this.events.getMousePosition(e);
+    var lonlatMouse = map.getLonLatFromPixel(position);
+    var lonlatTransf = lonlatMouse.transform(toProjection, fromProjection);
+    mouseLat = lonlatTransf.lat;
+    mouseLon = lonlatTransf.lon;
+    OpenLayers.Util.getElement("ts_lon_mouse").innerHTML = mouseLon.toFixed(4);
+    OpenLayers.Util.getElement("ts_lat_mouse").innerHTML = mouseLat.toFixed(4);
+    });
+	
+    // --- // --- // --- // --- // --- // --- // --- // --- //
+
+
+
+    </script> <script src="js/highcharts_functions.js"></script></p>
+</body>
+</html>

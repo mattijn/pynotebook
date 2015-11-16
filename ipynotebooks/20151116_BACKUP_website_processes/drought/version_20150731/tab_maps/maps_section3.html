@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+    </title>
+</head>
+
+<body>
+    <p>
+    </p>
+
+
+    <div class='spatial-data'>
+	<form id="map_di_form" name="map_di_form">
+        <table style="width:100%">
+
+
+<!-- ///// ------ ////// ----- PAP ----- ///// ------ ////// ----- -->
+
+            <tr>
+                <td><input class="map_di" name="mape_nm_di" id="map_di_pap" type="radio" value="pap">
+                </td>
+
+                <td>Precipitation Anomaly Percentage</td>
+
+                <td><img id='map_di_pap_refresh' src='js/img/refresh.png' style="width:20px">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                </td>
+
+                <td style="width=100%;">
+                    <div id='map_di_pap_opacity'>
+                        <table>
+                            <tr>
+                                <td>Opacity:</td>
+
+                                <td style="width:74%; padding-left: 5px;">
+                                    <div id='layer_opacity_map_di_pap' style=
+                                    "width:100%; border: 1px solid #aaaaaa">
+                                        <div class="ui-slider-handle">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+
+                <td>
+                </td>
+            </tr>
+
+<!-- ///// ------ ////// ----- END PAP ----- ///// ------ ////// ----- -->
+<!-- ///// ------ ////// ----- STR VCI ----- ///// ------ ////// ----- -->
+
+            <tr>
+                <td><input class="map_di" name="mape_nm_di" id="map_di_vci" type="radio" value="vci">
+                </td>
+
+                <td>Vegetation Condition Index</td>
+
+                <td><img id='map_di_vci_refresh' src='js/img/refresh.png' style="width:20px">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                </td>
+
+                <td style="width=100%;">
+                    <div id='map_di_vci_opacity'>
+                        <table>
+                            <tr>
+                                <td>Opacity:</td>
+
+                                <td style="width:74%; padding-left: 5px;">
+                                    <div id='layer_opacity_map_di_vci' style=
+
+                                    "width:100%; border: 1px solid #aaaaaa">
+                                        <div class="ui-slider-handle">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+
+                <td>
+                </td>
+            </tr>
+
+<!-- ///// ------ ////// ----- END VCI ----- ///// ------ ////// ----- -->
+<!-- ///// ------ ////// ----- STR TCI ----- ///// ------ ////// ----- -->
+
+            <tr>
+                <td><input class="map_di" name="mape_nm_di" id="map_di_tci" type="radio" value="tci">
+                </td>
+
+                <td>Temperature Condition Index</td>
+
+                <td><img id='map_di_tci_refresh' src='js/img/refresh.png' style="width:20px">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                </td>
+
+                <td style="width=100%;">
+                    <div id='map_di_tci_opacity'>
+                        <table>
+                            <tr>
+                                <td>Opacity:</td>
+
+                                <td style="width:74%; padding-left: 5px;">
+                                    <div id='layer_opacity_map_di_tci' style=
+                                    "width:100%; border: 1px solid #aaaaaa">
+                                        <div class="ui-slider-handle">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+
+                <td>
+                </td>
+            </tr>
+
+<!-- ///// ------ ////// ----- END TCI ----- ///// ------ ////// ----- -->
+<!-- ///// ------ ////// ----- STR VHI ----- ///// ------ ////// ----- -->
+
+            <tr>
+                <td><input class="map_di" name="mape_nm_di" id="map_di_vhi" type="radio" value="vhi">
+                </td>
+
+                <td>Vegetation Health Index</td>
+
+                <td><img id='map_di_vhi_refresh' src='js/img/refresh.png' style="width:20px">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                </td>
+
+                <td style="width=100%;">
+                    <div id='map_di_vhi_opacity'>
+                        <table>
+                            <tr>
+                                <td>Opacity:</td>
+
+                                <td style="width:74%; padding-left: 5px;">
+                                    <div id='layer_opacity_map_di_vhi' style=
+                                    "width:100%; border: 1px solid #aaaaaa">
+                                        <div class="ui-slider-handle">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+
+                <td>
+                </td>
+            </tr>
+
+<!-- ///// ------ ////// ----- END VHI ----- ///// ------ ////// ----- -->
+<!-- ///// ------ ////// ----- STR NVAI ----- ///// ------ ////// ----- -->
+
+            <tr>
+                <td><input class="map_di" name="mape_nm_di" id="map_di_nvai" type="radio" value="nvai">
+                </td>
+
+                <td>Normalised Vegetation Anomaly Index</td>
+
+                <td><img id='map_di_nvai_refresh' src='js/img/refresh.png' style="width:20px">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                </td>
+
+                <td style="width=100%;">
+                    <div id='map_di_nvai_opacity'>
+                        <table>
+                            <tr>
+                                <td>Opacity:</td>
+
+                                <td style="width:74%; padding-left: 5px;">
+                                    <div id='layer_opacity_map_di_nvai' style=
+                                    "width:100%; border: 1px solid #aaaaaa">
+                                        <div class="ui-slider-handle">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+
+                <td>
+                </td>
+            </tr>
+
+<!-- ///// ------ ////// ----- END NVAI ----- ///// ------ ////// ----- -->
+<!-- ///// ------ ////// ----- STR NTAI ----- ///// ------ ////// ----- -->
+
+            <tr>
+                <td><input class="map_di" name="mape_nm_di" id="map_di_ntai" type="radio" value="ntai">
+                </td>
+
+                <td>Normalised Temperature Anomaly Index</td>
+
+                <td><img id='map_di_ntai_refresh' src='js/img/refresh.png' style="width:20px">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                </td>
+
+                <td style="width=100%;">
+                    <div id='map_di_ntai_opacity'>
+                        <table>
+                            <tr>
+                                <td>Opacity:</td>
+
+                                <td style="width:74%; padding-left: 5px;">
+                                    <div id='layer_opacity_map_di_ntai' style=
+                                    "width:100%; border: 1px solid #aaaaaa">
+                                        <div class="ui-slider-handle">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+
+                <td>
+                </td>
+            </tr>
+
+<!-- ///// ------ ////// ----- END NTAI ----- ///// ------ ////// ----- -->
+<!-- ///// ------ ////// ----- STR NETAI ----- ///// ------ ////// ----- -->
+
+            <tr>
+                <td><input class="map_di" name="mape_nm_di" id="map_di_netai" disabled="disabled" type="radio" value="netai">
+                </td>
+
+                <td>Normalised ET Anomaly Index</td>
+
+                <td><img id='map_di_netai_refresh' src='js/img/refresh.png' style="width:20px">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                </td>
+
+                <td style="width=100%;">
+                    <div id='map_di_netai_opacity'>
+                        <table>
+                            <tr>
+                                <td>Opacity:</td>
+
+                                <td style="width:74%; padding-left: 5px;">
+                                    <div id='layer_opacity_map_di_netai' style=
+                                    "width:100%; border: 1px solid #aaaaaa">
+                                        <div class="ui-slider-handle">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+
+                <td>
+                </td>
+            </tr>
+
+<!-- ///// ------ ////// ----- END NETAI ----- ///// ------ ////// ----- -->
+
+
+	
+        </table>
+</form>
+    </div>
+    <p><script>
+
+    // --- // --- // --- // --- // --- // --- // --- // --- //
+
+        document.getElementById("map_di_pap_refresh").style.display = 'none';
+        document.getElementById("map_di_vci_refresh").style.display = 'none';
+        document.getElementById("map_di_tci_refresh").style.display = 'none';
+        document.getElementById("map_di_vhi_refresh").style.display = 'none';
+        document.getElementById("map_di_nvai_refresh").style.display = 'none';
+        document.getElementById("map_di_ntai_refresh").style.display = 'none';
+        document.getElementById("map_di_netai_refresh").style.display = 'none';
+	
+    document.getElementById("map_di_pap_opacity").style.display = 'none';
+    document.getElementById("map_di_vci_opacity").style.display = 'none'; 
+    document.getElementById("map_di_tci_opacity").style.display = 'none'; 
+    document.getElementById("map_di_vhi_opacity").style.display = 'none'; 
+    document.getElementById("map_di_nvai_opacity").style.display = 'none'; 
+    document.getElementById("map_di_ntai_opacity").style.display = 'none'; 
+    document.getElementById("map_di_netai_opacity").style.display = 'none';
+
+    var selector;
+    $('.map_di').on('change', function() {
+	console.log('we are here');
+
+    selector = $('input[name="mape_nm_di"]:checked', '#map_di_form').val();
+    console.log(selector);
+    if (selector == 'pap') {
+        //Add Derived Drought Indices OPTIONS
+        console.log('di_maps_pap');	
+        $('#map_di_pap_refresh').attr('src', './js/img/ls.gif');
+
+    // Execute function
+    executePrecipitationAnomalyPercentageSLDQuery();
+    //alert('execute!');		
+
+    // Show right options		
+        document.getElementById("map_di_pap_opacity").style.display = 'inline-block';
+
+        document.getElementById("map_di_pap_refresh").style.display = 'block';
+        document.getElementById("map_di_vci_refresh").style.display = 'none';
+        document.getElementById("map_di_tci_refresh").style.display = 'none';
+        document.getElementById("map_di_vhi_refresh").style.display = 'none';
+        document.getElementById("map_di_nvai_refresh").style.display = 'none';
+        document.getElementById("map_di_ntai_refresh").style.display = 'none';
+        document.getElementById("map_di_netai_refresh").style.display = 'none';
+
+
+        document.getElementById("map_di_pap_opacity").style.width = '100%';
+        document.getElementById("map_di_vci_opacity").style.display = 'none';
+        document.getElementById("map_di_tci_opacity").style.display = 'none';
+        document.getElementById("map_di_vhi_opacity").style.display = 'none'; 
+	document.getElementById("map_di_nvai_opacity").style.display = 'none'; 
+	document.getElementById("map_di_ntai_opacity").style.display = 'none'; 
+	document.getElementById("map_di_netai_opacity").style.display = 'none';
+
+    $('#map_di_pap_refresh').on('click', function () {
+    if (selector == 'pap') {
+        console.log('map_di_pap_check');
+        $('#map_di_pap_refresh').attr('src', './js/img/ls.gif');
+        executePrecipitationAnomalyPercentageSLDQuery();
+
+    //alert('execute!');
+    } else {
+        console.log('map_di_pap_uncheck');
+    }
+    });
+
+
+    $("#layer_opacity_map_di_pap").slider({
+    value: 70,
+    slide: function (e, ui) {
+        var map_di_pap = map.getLayersByName("SLD test");
+        map_di_pap[0].setOpacity(ui.value / 100);
+    }
+    });
+    };
+
+    //   - - - - - - -- - - - - - - - - -- - - - - - - - -
+
+
+    if (selector == 'vci') {
+        //Add Derived Drought Indices OPTIONS
+        console.log('di_maps_vci');	
+        $('#map_di_vci_refresh').attr('src', './js/img/ls.gif');
+
+    // Execute function
+    executeVCIQuery();		
+
+    // Show right options
+        document.getElementById("map_di_vci_opacity").style.display = 'inline-block';
+        document.getElementById("map_di_vci_opacity").style.width = '100%';
+
+        document.getElementById("map_di_pap_refresh").style.display = 'none';
+        document.getElementById("map_di_vci_refresh").style.display = 'block';
+        document.getElementById("map_di_tci_refresh").style.display = 'none';
+        document.getElementById("map_di_vhi_refresh").style.display = 'none';
+        document.getElementById("map_di_nvai_refresh").style.display = 'none';
+        document.getElementById("map_di_ntai_refresh").style.display = 'none';
+        document.getElementById("map_di_netai_refresh").style.display = 'none';
+
+        document.getElementById("map_di_pap_opacity").style.display = 'none';	
+        document.getElementById("map_di_tci_opacity").style.display = 'none';
+        document.getElementById("map_di_vhi_opacity").style.display = 'none'; 
+	document.getElementById("map_di_nvai_opacity").style.display = 'none'; 
+	document.getElementById("map_di_ntai_opacity").style.display = 'none'; 
+	document.getElementById("map_di_netai_opacity").style.display = 'none';
+	
+
+    $('#map_di_vci_refresh').on('click', function () {
+    if (selector == 'vci') {
+        console.log('map_di_vci_check');
+        $('#map_di_vci_refresh').attr('src', './js/img/ls.gif');
+
+    executeVCIQuery();
+    //alert('execute!');
+    } else {
+        console.log('map_di_vci_uncheck');
+    }
+    });
+
+
+    $("#layer_opacity_map_di_vci").slider({
+    value: 70,
+    slide: function (e, ui) {
+        var map_di_vci = map.getLayersByName("SLD test");
+        map_di_vci[0].setOpacity(ui.value / 100);
+    }
+    });
+    };
+    //   - - - - - - -- - - - - - - - - -- - - - - - - - -
+
+    //   - - - - - - -- - - - - - - - - -- - - - - - - - -
+
+
+    if (selector == 'tci') {
+        //Add Derived Drought Indices OPTIONS
+        console.log('di_maps_tci');	
+        $('#map_di_tci_refresh').attr('src', './js/img/ls.gif');
+
+    // Execute function
+    executeTCIQuery();		
+
+    // Show right options
+        document.getElementById("map_di_tci_opacity").style.display = 'inline-block';
+        document.getElementById("map_di_tci_opacity").style.width = '100%';
+
+        document.getElementById("map_di_pap_refresh").style.display = 'none';
+        document.getElementById("map_di_vci_refresh").style.display = 'none';
+        document.getElementById("map_di_tci_refresh").style.display = 'block';
+        document.getElementById("map_di_vhi_refresh").style.display = 'none';
+        document.getElementById("map_di_nvai_refresh").style.display = 'none';
+        document.getElementById("map_di_ntai_refresh").style.display = 'none';
+        document.getElementById("map_di_netai_refresh").style.display = 'none';
+
+        document.getElementById("map_di_pap_opacity").style.display = 'none';
+        document.getElementById("map_di_vci_opacity").style.display = 'none';
+        document.getElementById("map_di_vhi_opacity").style.display = 'none'; 
+	document.getElementById("map_di_nvai_opacity").style.display = 'none'; 
+	document.getElementById("map_di_ntai_opacity").style.display = 'none'; 
+	document.getElementById("map_di_netai_opacity").style.display = 'none';
+
+    $('#map_di_tci_refresh').on('click', function () {
+    if (selector == 'tci') {
+        console.log('map_di_tci_check');
+        $('#map_di_tci_refresh').attr('src', './js/img/ls.gif');
+
+    executeTCIQuery();
+    //alert('execute!');
+    } else {
+        console.log('map_di_tci_uncheck');
+    }
+    });
+
+
+    $("#layer_opacity_map_di_tci").slider({
+    value: 70,
+    slide: function (e, ui) {
+        var map_di_tci = map.getLayersByName("SLD test");
+        map_di_tci[0].setOpacity(ui.value / 100);
+    }
+    });
+
+    };
+    //   - - - - - - -- - - - - - - - - -- - - - - - - - -
+
+    //   - - - - - - -- - - - - - - - - -- - - - - - - - -
+
+
+    if (selector == 'vhi') {
+        //Add Derived Drought Indices OPTIONS
+        console.log('di_maps_vhi');	
+        $('#map_di_vhi_refresh').attr('src', './js/img/ls.gif');
+
+    // Execute function
+    executeVHIQuery();		
+
+    // Show right options
+        document.getElementById("map_di_vhi_opacity").style.display = 'inline-block';
+        document.getElementById("map_di_vhi_opacity").style.width = '100%';
+
+        document.getElementById("map_di_pap_refresh").style.display = 'none';
+        document.getElementById("map_di_vci_refresh").style.display = 'none';
+        document.getElementById("map_di_tci_refresh").style.display = 'none';
+        document.getElementById("map_di_vhi_refresh").style.display = 'block';
+        document.getElementById("map_di_nvai_refresh").style.display = 'none';
+        document.getElementById("map_di_ntai_refresh").style.display = 'none';
+        document.getElementById("map_di_netai_refresh").style.display = 'none';
+
+        document.getElementById("map_di_pap_opacity").style.display = 'none';
+        document.getElementById("map_di_vci_opacity").style.display = 'none';
+        document.getElementById("map_di_tci_opacity").style.display = 'none'; 
+	document.getElementById("map_di_nvai_opacity").style.display = 'none'; 
+	document.getElementById("map_di_ntai_opacity").style.display = 'none'; 
+	document.getElementById("map_di_netai_opacity").style.display = 'none';
+
+    $('#map_di_vhi_refresh').on('click', function () {
+    if (selector == 'vhi') {
+        console.log('map_di_vhi_check');
+        $('#map_di_vhi_refresh').attr('src', './js/img/ls.gif');
+
+    executeVHIQuery();
+    //alert('execute!');
+    } else {
+        console.log('map_di_vhi_uncheck');
+    }
+    });
+
+
+    $("#layer_opacity_map_di_vhi").slider({
+    value: 70,
+    slide: function (e, ui) {
+        var map_di_vhi = map.getLayersByName("SLD test");
+        map_di_vhi[0].setOpacity(ui.value / 100);
+    }
+    });
+
+    };
+    //   - - - - - - -- - - - - - - - - -- - - - - - - - -
+
+// Start NVAI
+    //   - - - - - - -- - - - - - - - - -- - - - - - - - -
+
+
+    if (selector == 'nvai') {
+        //Add Derived Drought Indices OPTIONS
+        console.log('di_maps_nvai');	
+        $('#map_di_nvai_refresh').attr('src', './js/img/ls.gif');
+
+    // Execute function
+    executeNVAIQuery();		
+
+    // Show right options
+        document.getElementById("map_di_nvai_opacity").style.display = 'inline-block';
+        document.getElementById("map_di_nvai_opacity").style.width = '100%';
+
+        document.getElementById("map_di_pap_refresh").style.display = 'none';
+        document.getElementById("map_di_vci_refresh").style.display = 'none';
+        document.getElementById("map_di_tci_refresh").style.display = 'none';
+        document.getElementById("map_di_vhi_refresh").style.display = 'none';
+        document.getElementById("map_di_nvai_refresh").style.display = 'block';
+        document.getElementById("map_di_ntai_refresh").style.display = 'none';
+        document.getElementById("map_di_netai_refresh").style.display = 'none';
+
+        document.getElementById("map_di_pap_opacity").style.display = 'none';
+        document.getElementById("map_di_vci_opacity").style.display = 'none';
+        document.getElementById("map_di_tci_opacity").style.display = 'none'; 
+	document.getElementById("map_di_vhi_opacity").style.display = 'none'; 
+	document.getElementById("map_di_ntai_opacity").style.display = 'none'; 
+	document.getElementById("map_di_netai_opacity").style.display = 'none';
+
+    $('#map_di_nvai_refresh').on('click', function () {
+    if (selector == 'nvai') {
+        console.log('map_di_nvai_check');
+        $('#map_di_nvai_refresh').attr('src', './js/img/ls.gif');
+
+    executeNVAIQuery();
+    //alert('execute!');
+    } else {
+        console.log('map_di_nvai_uncheck');
+    }
+    });
+
+
+    $("#layer_opacity_map_di_nvai").slider({
+    value: 70,
+    slide: function (e, ui) {
+        var map_di_nvai = map.getLayersByName("SLD test");
+        map_di_nvai[0].setOpacity(ui.value / 100);
+    }
+    });
+
+    };
+    //   - - - - - - -- - - - - - - - - -- - - - - - - - -
+// End NVAI
+
+// Start NTAI
+    //   - - - - - - -- - - - - - - - - -- - - - - - - - -
+
+
+    if (selector == 'ntai') {
+        //Add Derived Drought Indices OPTIONS
+        console.log('di_maps_ntai');	
+        $('#map_di_ntai_refresh').attr('src', './js/img/ls.gif');
+
+    // Execute function
+    executeNTAIQuery();		
+
+    // Show right options
+        document.getElementById("map_di_ntai_opacity").style.display = 'inline-block';
+        document.getElementById("map_di_ntai_opacity").style.width = '100%';
+
+        document.getElementById("map_di_pap_refresh").style.display = 'none';
+        document.getElementById("map_di_vci_refresh").style.display = 'none';
+        document.getElementById("map_di_tci_refresh").style.display = 'none';
+        document.getElementById("map_di_vhi_refresh").style.display = 'none';
+        document.getElementById("map_di_nvai_refresh").style.display = 'none';
+        document.getElementById("map_di_ntai_refresh").style.display = 'block';
+        document.getElementById("map_di_netai_refresh").style.display = 'none';
+
+        document.getElementById("map_di_pap_opacity").style.display = 'none';
+        document.getElementById("map_di_vci_opacity").style.display = 'none';
+        document.getElementById("map_di_tci_opacity").style.display = 'none'; 
+	document.getElementById("map_di_nvai_opacity").style.display = 'none'; 
+	document.getElementById("map_di_vhi_opacity").style.display = 'none'; 
+	document.getElementById("map_di_netai_opacity").style.display = 'none';
+
+    $('#map_di_ntai_refresh').on('click', function () {
+    if (selector == 'ntai') {
+        console.log('map_di_ntai_check');
+        $('#map_di_ntai_refresh').attr('src', './js/img/ls.gif');
+
+    executeNTAIQuery();
+    //alert('execute!');
+    } else {
+        console.log('map_di_ntai_uncheck');
+    }
+    });
+
+
+    $("#layer_opacity_map_di_ntai").slider({
+    value: 70,
+    slide: function (e, ui) {
+        var map_di_ntai = map.getLayersByName("SLD test");
+        map_di_ntai[0].setOpacity(ui.value / 100);
+    }
+    });
+
+    };
+    //   - - - - - - -- - - - - - - - - -- - - - - - - - -
+// End NTAI
+
+// Start NETAI
+    //   - - - - - - -- - - - - - - - - -- - - - - - - - -
+
+
+    if (selector == 'netai') {
+        //Add Derived Drought Indices OPTIONS
+        console.log('di_maps_netai');	
+        //$('#map_di_netai_refresh').attr('src', './js/img/ls.gif');
+
+	// Execute function
+	alert('no ET data yet!');
+	//executeNETAIQuery();		
+
+	// Show right options
+        //document.getElementById("map_di_netai_opacity").style.display = 'inline-block';
+        //document.getElementById("map_di_netai_opacity").style.width = '100%';
+
+        document.getElementById("map_di_pap_refresh").style.display = 'none';
+        document.getElementById("map_di_vci_refresh").style.display = 'none';
+        document.getElementById("map_di_tci_refresh").style.display = 'none';
+        document.getElementById("map_di_vhi_refresh").style.display = 'none';
+        document.getElementById("map_di_nvai_refresh").style.display = 'none';
+        document.getElementById("map_di_ntai_refresh").style.display = 'none';
+        //document.getElementById("map_di_netai_refresh").style.display = 'block';
+
+        document.getElementById("map_di_pap_opacity").style.display = 'none';
+        document.getElementById("map_di_vci_opacity").style.display = 'none';
+        document.getElementById("map_di_tci_opacity").style.display = 'none'; 
+	document.getElementById("map_di_nvai_opacity").style.display = 'none'; 
+	document.getElementById("map_di_ntai_opacity").style.display = 'none'; 
+	document.getElementById("map_di_vhi_opacity").style.display = 'none';
+
+    $('#map_di_netai_refresh').on('click', function () {
+    if (selector == 'netai') {
+        console.log('map_di_netai_check');
+        //$('#map_di_netai_refresh').attr('src', './js/img/ls.gif');
+
+	alert('no ET data yet!');
+	//executeNETAIQuery();
+
+	} else {
+	console.log('map_di_netai_uncheck');
+	}
+	});
+
+
+    $("#layer_opacity_map_di_netai").slider({
+    value: 70,
+    slide: function (e, ui) {
+        var map_di_netai = map.getLayersByName("SLD test");
+        map_di_netai[0].setOpacity(ui.value / 100);
+    }
+    });
+
+    };
+    //   - - - - - - -- - - - - - - - - -- - - - - - - - -
+// End NETAI
+
+
+});
+
+
+
+// ---- /// --- //// ----- ///// ------
+
+    </script> 
+</body>
+</html>

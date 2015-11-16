@@ -1,0 +1,93 @@
+html,body {
+    height:100%;
+    margin:0;
+    padding:0
+}
+
+#header {
+    width:100%;
+    position:relative
+}
+
+#map {
+    width:100%;
+/*left: 0px;*/
+/*right: 350px;*/
+    position:relative;
+    height:-moz-calc(100% - 40px);
+/* WebKit */
+    height:-webkit-calc(100% - 40px);
+/* Opera */
+    height:-o-calc(100% - 40x);
+/* Standard */
+    height:calc(100% - 40px);
+    float:left
+}
+
+#tabs {
+    margin-top:-40px;
+/* Firefox */
+    height: calc(100% + 40px);
+/*overflow : scroll;*/
+    overflow-x:hidden;
+    right:0
+}
+
+#charts {
+    width:100%;
+    height:500px;
+    float:left
+}
+
+.legend_sld {
+    position:absolute;
+    font-size:1.1em;
+    color:#222;
+    bottom:20px;
+    left:0;
+    z-index:12;
+    background:#fff;
+/* Fall-back for browsers that don't support rgba */
+    background:rgba(255,255,255,.5)
+}
+
+.date_layer {
+    position:absolute;
+    font-size:1.1em;
+    color:#222;
+    bottom:20px;
+    left:140px;
+    z-index:12
+}
+
+
+
+.fixed-dialog {
+    position:fixed!important;
+    top:50px!important;
+    left:50px!important;
+    width:calc(100% - 450px)!important
+}
+
+#ol-basemap {
+    z-index: 1;
+    position:absolute;
+    top:45px;
+    left:10px;    
+}
+
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
+.console-log-div {
+  border: 1px solid #ffa500;
+  padding: 5px 10px;
+  border-radius: 0px;
+  width: 280px !important;
+  background-color: #efefef;
+  word-break: break-all;
+}
+
+#console-log-text {
+width: 280px;}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+    </title>
+</head>
+
+<body>
+    <aside class="widget">
+        <p>
+        </p>
+
+
+        <table>
+            <tr>
+                <td><label>Start date :</label>
+                </td>
+
+                <td><input id="startDate_order" type="month">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td><label>End date :</label>
+                </td>
+
+                <td><input id="endDate_order" type="month" disabled="disabled" >
+                </td>
+            </tr>
+        </table>
+<p>
+</p>
+<table style='width:100%'>
+<tr>
+<td>
+For date current map:
+</td>
+<td>
+<input type='button' class='getDateMaps' value="Get date">
+</td>
+</tr>
+
+</table>
+
+
+
+        <p>
+        </p>
+    </aside>
+    <script>
+$('#startDate_order').MonthPicker({
+            ShowIcon: false
+        });
+
+        $('#endDate_order').MonthPicker({
+            ShowIcon: false,
+	    Disabled: true
+        });
+
+    $('.getDateMaps').click(function () {
+	if ($('#startDate_map').length > 0) {
+	// dostuff
+	dateMaps = $('#startDate_map').MonthPicker('GetSelectedYear') + '-' + pad($(
+	    '#startDate_map').MonthPicker('GetSelectedMonth'));
+	$("#startDate_order").val(dateMaps);	
+        }
+        else {alert("You did not set a date on the 'Maps' tab")}});
+    </script>
+</body>
+</html>

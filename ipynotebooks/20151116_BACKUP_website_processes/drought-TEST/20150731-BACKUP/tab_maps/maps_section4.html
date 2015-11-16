@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+    </title>
+</head>
+
+<body>
+    <p>Click on map to update location<br>
+    Current location: latitude: <span id="lat1">--lat--</span>, longitude: <span id=
+    "lon1">--long--</span><br>
+    <select id="dataset">
+        <option disabled="disabled" selected="selected" value="">
+            Please select a dataset
+        </option>
+
+        <option value="trmm_3b42_coverage_1">
+            TRMM/3B42_GLOBAL
+        </option>
+
+        <option value="mod13c1_coverage">
+            MODIS/MOD13A1_CHINA
+        </option>
+
+        <option value="modis_13c1_cov">
+            MODIS/MOD13C1_GLOBAL
+        </option>
+    </select><br>
+    <br>
+    From <select id="date_from">
+        <option disabled="disabled" selected="selected" value="">
+            select year
+        </option>
+
+        <option class="choice1" value="2015-01-01">
+            2015
+        </option>
+
+        <option class="choice1" value="2014-01-01">
+            2014
+        </option>
+
+        <option class="choice1" value="2013-01-01">
+            2013
+        </option>
+
+        <option class="choice1" value="2012-01-01">
+            2012
+        </option>
+
+        <option class="choice1" value="2011-01-01">
+            2011
+        </option>
+
+        <option class="choice1" value="2010-01-01">
+            2010
+        </option>
+
+        <option class="choice1" value="2009-01-01">
+            2009
+        </option>
+
+        <option class="choice1" value="2008-01-01">
+            2008
+        </option>
+
+        <option class="choice1" value="2007-01-01">
+            2007
+        </option>
+
+        <option class="choice1" value="2006-01-01">
+            2006
+        </option>
+
+        <option class="choice1" value="2005-01-01">
+            2005
+        </option>
+
+        <option class="choice1" value="2004-01-01">
+            2004
+        </option>
+
+        <option class="choice1" value="2003-01-01">
+            2003
+        </option>
+
+        <option class="choice1" value="2002-01-01">
+            2002
+        </option>
+
+        <option class="choice1" value="2001-01-01">
+            2001
+        </option>
+    </select>To <select id="date_to">
+        <option disabled="disabled" selected="selected" value="">
+            select year
+        </option>
+
+        <option class="choice1" value="2015-01-01">
+            2015
+        </option>
+
+        <option class="choice1" value="2014-01-01">
+            2014
+        </option>
+
+        <option class="choice1" value="2013-01-01">
+            2013
+        </option>
+
+        <option class="choice1" value="2012-01-01">
+            2012
+        </option>
+
+        <option class="choice1" value="2011-01-01">
+            2011
+        </option>
+
+        <option class="choice1" value="2010-01-01">
+            2010
+        </option>
+
+        <option class="choice1" value="2009-01-01">
+            2009
+        </option>
+
+        <option class="choice1" value="2008-01-01">
+            2008
+        </option>
+
+        <option class="choice1" value="2007-01-01">
+            2007
+        </option>
+
+        <option class="choice1" value="2006-01-01">
+            2006
+        </option>
+
+        <option class="choice1" value="2005-01-01">
+            2005
+        </option>
+
+        <option class="choice1" value="2004-01-01">
+            2004
+        </option>
+
+        <option class="choice1" value="2003-01-01">
+            2003
+        </option>
+
+        <option class="choice1" value="2002-01-01">
+            2002
+        </option>
+
+        <option class="choice1" value="2001-01-01">
+            2001
+        </option>
+    </select><br>
+    <br>
+    <!--
+    <select id="category">
+        <option value="" disabled="disabled" selected="selected">Please select an algorithm</option>
+        <option name="choice1" value="hants">HANTS</option>
+        <option name="choice2" value="stdanomaly">Std. Anomaly</option>
+        <option name="choice2" value="ewma">EWMA</option>
+    </select>
+-->
+     <select id="number_of_frequencies">
+        <option disabled="disabled" selected="selected" value="">
+            No. freq
+        </option>
+
+        <option value="2">
+            2
+        </option>
+
+        <option value="4">
+            4
+        </option>
+
+        <option value="8">
+            8
+        </option>
+
+        <option value="16">
+            16
+        </option>
+
+        <option value="32">
+            32
+        </option>
+    </select> <select id="type_of_outliers">
+        <option disabled="disabled" selected="selected" value="">
+            Type of outliers
+        </option>
+
+        <option value="1">
+            High values are outliers
+        </option>
+
+        <option value="2">
+            Low values are outliers
+        </option>
+
+        <option value="0">
+            No outliers
+        </option>
+    </select><br>
+    <button id="compute" onclick="executeHANTSQuery()" type="button">Compute</button> <a href=
+    "#chart2">Go to Chart-1</a></p>
+</body>
+</html>
