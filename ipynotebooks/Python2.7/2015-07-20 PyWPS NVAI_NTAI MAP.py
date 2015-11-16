@@ -139,6 +139,7 @@ def cmap_discretize(cmap, N):
 
 date='2011-01-01'
 spl_arr=[108.8,38.2,121.1,43.5]
+spl_arr=[75,25.5,103.75,39]
 #alpha=0.5
 #VHI,ds = _VHI_CAL(date,spl_arr)
 #TCI, cur_date = _TCI_CAL(date,spl_arr)
