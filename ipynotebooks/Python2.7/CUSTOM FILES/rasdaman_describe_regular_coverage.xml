@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wcs:CoverageDescriptions xsi:schemaLocation="http://www.opengis.net/wcs/2.0 http://schemas.opengis.net/wcs/2.0/wcsAll.xsd" xmlns:wcs="http://www.opengis.net/wcs/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:crs="http://www.opengis.net/wcs/service-extension/crs/1.0" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <wcs:CoverageDescription gml:id="NDVI_MOD13C1005" xmlns="http://www.opengis.net/gml/3.2" xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0" xmlns:swe="http://www.opengis.net/swe/2.0">
+    <boundedBy>
+      <Envelope srsName="http://localhost:8080/def/crs-compound?1=http://localhost:8080/def/crs/EPSG/0/4326&amp;2=http://localhost:8080/def/crs/OGC/0/AnsiDate" axisLabels="Lat Long ansi" uomLabels="degree degree d" srsDimension="3">
+        <lowerCorner>-90.1 -180 145772</lowerCorner>
+        <upperCorner>90 180.1 150844</upperCorner>
+      </Envelope>
+    </boundedBy>
+    <wcs:CoverageId>NDVI_MOD13C1005</wcs:CoverageId>
+    <gmlcov:metadata/>
+    <domainSet>
+      <RectifiedGrid dimension="3" gml:id="NDVI_MOD13C1005-grid">
+        <limits>
+          <GridEnvelope>
+            <low>0 0 0</low>
+            <high>7201 3601 316</high>
+          </GridEnvelope>
+        </limits>
+        <axisLabels>Long Lat ansi</axisLabels>
+        <origin>
+          <Point gml:id="NDVI_MOD13C1005-origin" srsName="http://localhost:8080/def/crs-compound?1=http://localhost:8080/def/crs/EPSG/0/4326&amp;2=http://localhost:8080/def/crs/OGC/0/AnsiDate" axisLabels="Lat Long ansi" uomLabels="degree degree d" srsDimension="3">
+            <pos>89.975 -179.975 145780</pos>
+          </Point>
+        </origin>
+        <offsetVector srsName="http://localhost:8080/def/crs-compound?1=http://localhost:8080/def/crs/EPSG/0/4326&amp;2=http://localhost:8080/def/crs/OGC/0/AnsiDate" axisLabels="Lat Long ansi" uomLabels="degree degree d" srsDimension="3">0 0.05 0</offsetVector>
+        <offsetVector srsName="http://localhost:8080/def/crs-compound?1=http://localhost:8080/def/crs/EPSG/0/4326&amp;2=http://localhost:8080/def/crs/OGC/0/AnsiDate" axisLabels="Lat Long ansi" uomLabels="degree degree d" srsDimension="3">-0.05 0 0</offsetVector>
+        <offsetVector srsName="http://localhost:8080/def/crs-compound?1=http://localhost:8080/def/crs/EPSG/0/4326&amp;2=http://localhost:8080/def/crs/OGC/0/AnsiDate" axisLabels="Lat Long ansi" uomLabels="degree degree d" srsDimension="3">0 0 16</offsetVector>
+      </RectifiedGrid>
+    </domainSet>
+    <gmlcov:rangeType>
+      <swe:DataRecord>
+        <swe:field name="Gray">
+          <swe:Quantity>
+            <swe:nilValues>
+              <swe:NilValues/>
+            </swe:nilValues>
+            <swe:uom code="NDVI"/>
+          </swe:Quantity>
+        </swe:field>
+      </swe:DataRecord>
+    </gmlcov:rangeType>
+    <wcs:ServiceParameters>
+      <wcs:CoverageSubtype>RectifiedGridCoverage</wcs:CoverageSubtype>
+      <CoverageSubtypeParent xmlns="http://www.opengis.net/wcs/2.0">
+        <CoverageSubtype>AbstractDiscreteCoverage</CoverageSubtype>
+        <CoverageSubtypeParent>
+          <CoverageSubtype>AbstractCoverage</CoverageSubtype>
+        </CoverageSubtypeParent>
+      </CoverageSubtypeParent>
+      <wcs:nativeFormat>application/octet-stream</wcs:nativeFormat>
+    </wcs:ServiceParameters>
+  </wcs:CoverageDescription>
+</wcs:CoverageDescriptions>
