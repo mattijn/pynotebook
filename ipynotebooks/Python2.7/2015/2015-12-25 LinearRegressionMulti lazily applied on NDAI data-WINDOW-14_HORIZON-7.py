@@ -204,7 +204,7 @@ path_base = r'D:\Data\LS_DATA\NDAI-1day_IM_bbox_warp//NDAI_2003_001_IM_bbox_wrap
 folder_ndai = r'D:\Data\LS_DATA\NDAI-1day_IM_bbox_warp'
 
 
-# In[ ]:
+# In[7]:
 
 # register all of the GDAL drivers
 gdal.AllRegister()
@@ -234,7 +234,7 @@ noFiles = len(files_ndai)
 print ( noFiles ) 
 
 
-# In[ ]:
+# In[8]:
 
 #base_ = np.zeros(shape=(len_,rows,cols), dtype=np.float32)
 
@@ -273,7 +273,7 @@ for i in range(0, rows, yBlockSize): #(0, rows, yBlockSize)
         window = 14 # forecast window (last 7 days)
         horizon = 7 # forecast horizon (1 day)
         alpha = 0.5
-        split = int(np.ceil(ap_ndai_2D[0].shape[0]*(1-alpha)) - (window + 1))
+        split = int(np.ceil(ap_ndai_2D[0].shape[0]*(1-alpha)) - (window + horizon))
         y_pred = np.zeros_like(ap_ndai_2D[:,:split])
         R2 = np.zeros((numRows,numCols)).ravel()
         # prepare prediction array
@@ -295,8 +295,8 @@ for i in range(0, rows, yBlockSize): #(0, rows, yBlockSize)
         R2 = R2.reshape(numRows,numCols)
         
         # save 3D blocks to temp
-        folder_temp_y_pred = r'D:\tmp\ndai\ndai\window\14horizon7'
-        folder_temp_r2 = r'D:\tmp\ndai\R2\window\14horizon7'
+        folder_temp_y_pred = r'D:\tmp\ndai\ndai\window14horizon7'
+        folder_temp_r2 = r'D:\tmp\ndai\R2\window14horizon7'
         file_temp_y_pred = 'Y_PRED_col_'+str(j).zfill(4)+'_row_'+str(i).zfill(4)+'_numCols_'+str(numCols).zfill(4)+'_numRows_'+str(numRows).zfill(4)
         file_temp_r2 = 'R2_col_'+str(j).zfill(4)+'_row_'+str(i).zfill(4)+'_numCols_'+str(numCols).zfill(4)+'_numRows_'+str(numRows).zfill(4)
         path_temp_y_pred = folder_temp_y_pred + '//' + file_temp_y_pred
@@ -307,7 +307,7 @@ for i in range(0, rows, yBlockSize): #(0, rows, yBlockSize)
         np.save(path_temp_r2, R2)
 
 
-# In[ ]:
+# In[9]:
 
 # load 2D tiles from temp and save as tif
 folder_temp = r'D:\tmp\ndai\R2\window14horizon7'
@@ -338,10 +338,10 @@ print (path_out)
 saveRaster(path_out,base_,ds,datatype=6)
 
 
-# In[ ]:
+# In[10]:
 
 # load 2D tiles from temp and save as tif
-folder_temp = r'D:\tmp\ndai\ndai\window14horizon7'
+folder_temp = r'D:\tmp\ndai\ndai\window28horizon14'
 files_temp = listall(folder_temp, extension='.npy')
 noFilesTemp = len(files_temp)
 print ( noFilesTemp ) 
@@ -363,7 +363,7 @@ for i in range(noFiles):
         base_[row:row+numRows,col:col+numCols] = load_temp_tile[i,:,:]
 
     print '\n'
-    folder_out = r'D:\tmp\ndai_out\NDAI\window14horizon7//'
+    folder_out = r'D:\tmp\ndai_out\NDAI\window28horizon14//'
     file_out = 'NDAI_R2_'+str(i).zfill(4)+'.tif'
     path_out = folder_out+file_out
     print (path_out)

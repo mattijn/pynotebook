@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 import numpy as np
 from osgeo import gdal
@@ -9,7 +9,7 @@ import os
 import sys
 
 
-# In[ ]:
+# In[2]:
 
 def saveRaster(path, array, dsSource, datatype=3, formatraster="GTiff", nan=None): 
     """
@@ -75,7 +75,7 @@ def saveRaster(path, array, dsSource, datatype=3, formatraster="GTiff", nan=None
     array = None
 
 
-# In[ ]:
+# In[3]:
 
 def listall(RootFolder, wildcard='', extension='.tif'):
     lists = [os.path.join(root, name)    
@@ -86,7 +86,7 @@ def listall(RootFolder, wildcard='', extension='.tif'):
     return lists
 
 
-# In[ ]:
+# In[4]:
 
 class LinearRegression_Multi:
     def stacked_lstsq(self, L, b, rcond=1e-10):
@@ -147,7 +147,7 @@ class LinearRegression_Multi:
         return np.einsum('ijx,ix->ij',X,self.coef_) + self.intercept_[None].T
 
 
-# In[ ]:
+# In[5]:
 
 def forecast(to_forecast, k=7, h=1, alpha=0.5):
     """
@@ -198,13 +198,13 @@ def forecast(to_forecast, k=7, h=1, alpha=0.5):
     return y_pred, R2
 
 
-# In[ ]:
+# In[6]:
 
 path_base = r'D:\Data\LS_DATA\NDAI-1day_IM_bbox_warp//NDAI_2003_001_IM_bbox_wrap.tif'
 folder_ndai = r'D:\Data\LS_DATA\NDAI-1day_IM_bbox_warp'
 
 
-# In[ ]:
+# In[10]:
 
 # register all of the GDAL drivers
 gdal.AllRegister()
@@ -231,7 +231,46 @@ yBlockSize = 200
 
 files_ndai = listall(folder_ndai)
 noFiles = len(files_ndai)
+Files = np.array([len(files_ndai)])
 print ( noFiles ) 
+
+
+# In[69]:
+
+# prepare output prediction array
+window = 14 # forecast window (last 7 days)
+horizon = 7 # forecast horizon (1 day)
+alpha = 0.5
+split = int(np.ceil(Files*(1-alpha)) - (window + horizon))
+split
+
+
+# In[70]:
+
+filename_out = files_ndai[(noFiles - split):]
+print files_rename[0][0:-24]+'NDAI_W14H07_'+filename_out[0][-25:-17]+'.tif'
+
+
+# In[68]:
+
+files_rename = listall(r'D:\tmp\ndai_out\NDAI\window14horizon7', wildcard='', extension='.tif')
+len(files_rename)
+files_rename[0][0:-24]
+
+
+# In[72]:
+
+for idx, file in enumerate(files_rename):
+    old = file
+    new = file[0:-24]+'NDAI_W14H07_'+filename_out[idx][-25:-17]+'.tif'
+    os.rename(old, new)
+    print old, new, '\n'    
+
+
+# In[35]:
+
+os.rename(files_rename[0]
+#'NDAI_R2_'+filename_out[i][-25:-17]+'.tif'
 
 
 # In[ ]:
