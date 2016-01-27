@@ -28,10 +28,11 @@ def listall(RootFolder, varname='',extension='.png'):
     return lists
 
 
-# In[4]:
+# In[12]:
 
+# VHI VHI START
 # get index from tif files
-files = listall(r'J:\NDAI_2003-2014', extension='.tif')
+files = listall(r'J:\VHI_2003_2013', extension='.tif')
 index = []
 for i in files:
     # get date
@@ -43,9 +44,7 @@ for i in files:
     index.append(date)
 index = np.array(index)
 
-
-# In[5]:
-
+print files[0], index[0]
 # get columns from shp file
 shp_filename = r'D:\Data\NDAI_VHI_GROUNDTRUTH\groundtruth_2003_2013.shp'
 siteID_list = []
@@ -56,17 +55,11 @@ for feat in lyr:
     siteID = int(feat.GetField('Site_ID'))
     siteID_list.append(siteID)
 siteID_array = np.array(siteID_list)
-columns = np.unique(siteID_array).astype(str)    
-
-
-# In[6]:
+columns = np.unique(siteID_array).astype(str)   
 
 # create empty DataFrame
 df = pd.DataFrame(index=index, columns=columns)
 df_shp = pd.DataFrame(index=index, columns=columns)
-
-
-# In[7]:
 
 for i in files:
     # load raster GeoTransform, RasterBand    
@@ -105,23 +98,367 @@ for i in files:
 
             # get mean of nine pixels surround station ID
             array_ID_nine = rb.ReadAsArray(px-1,py-1,3,3)
-            stationID_mean = np.nanmean(array_ID_nine)            
+            array_ID_nine = np.ma.masked_equal(array_ID_nine, 0)
+            stationID_mean = np.ma.mean(array_ID_nine)
+            # stationID_mean = np.nanmean(array_ID_nine)            
             # set pandas dataframe value
             df.ix[date][siteID] = stationID_mean
             #print siteID#, px, py, stationID_mean, df.ix[date][siteID]
         except Exception, e:
             print e, i, feat.GetFID()
             continue            
-
-
-# In[9]:
-
+            
 # save dataframe to pick so it can be loaded if necessary
-#df.to_pickle(r'D:\Data\NDAI_VHI_GROUNDTRUTH//remote_sensing_2003_2013.pkl')
-df = pd.read_pickle(r'D:\Data\NDAI_VHI_GROUNDTRUTH//remote_sensing_2003_2013.pkl') 
+df.to_pickle(r'D:\Data\NDAI_VHI_GROUNDTRUTH//RS_VHI_2003_2013.pkl')
+#df = pd.read_pickle(r'D:\Data\NDAI_VHI_GROUNDTRUTH//remote_sensing_2003_2013.pkl')             
 
 
-# In[10]:
+# In[ ]:
+
+# NVAI NVAI START
+# get index from tif files
+files = listall(r'D:\Data\NVAI_2003_2013', extension='.tif')
+index = []
+for i in files:
+    # get date
+    year = int(i[-12:-8])
+    doy = int(i[-7:-4])
+    date = datetime(year, 1, 1) + timedelta(doy - 1)
+    date = np.datetime64(date)
+    date = pd.Timestamp(np.datetime_as_string(date))
+    index.append(date)
+index = np.array(index)
+
+print files[0], index[0]
+# get columns from shp file
+shp_filename = r'D:\Data\NDAI_VHI_GROUNDTRUTH\groundtruth_2003_2013.shp'
+siteID_list = []
+ds = ogr.Open(shp_filename)
+lyr = ds.GetLayer()
+for feat in lyr:
+    # get siteID from Field
+    siteID = int(feat.GetField('Site_ID'))
+    siteID_list.append(siteID)
+siteID_array = np.array(siteID_list)
+columns = np.unique(siteID_array).astype(str)   
+
+# create empty DataFrame
+df = pd.DataFrame(index=index, columns=columns)
+df_shp = pd.DataFrame(index=index, columns=columns)
+
+for i in files:
+    # load raster GeoTransform, RasterBand    
+    try:
+        src_ds = gdal.Open(i) 
+        gt = src_ds.GetGeoTransform()
+        rb = src_ds.GetRasterBand(1)
+
+        # get date
+        year = int(i[-12:-8])
+        doy = int(i[-7:-4])
+        date = datetime(year, 1, 1) + timedelta(doy - 1)
+        date = np.datetime64(date)
+        date = pd.Timestamp(np.datetime_as_string(date))
+        print date
+    except Exception, e:
+        print e, i
+        continue
+        
+    ds = ogr.Open(shp_filename)
+    lyr = ds.GetLayer()
+    for feat in lyr:
+        try:
+            # get siteID from Field
+
+            siteID = str(int(feat.GetField('Site_ID')))
+            #if siteID == '50353':
+
+            # get lon/lat from GeometryRef
+            geom = feat.GetGeometryRef()
+            mx,my=geom.GetX(), geom.GetY()  #coord in map units
+
+            # convert from map to pixel coordinates.    
+            px = int((mx - gt[0]) / gt[1]) #x pixel
+            py = int((my - gt[3]) / gt[5]) #y pixel
+
+            # get mean of nine pixels surround station ID
+            array_ID_nine = rb.ReadAsArray(px-1,py-1,3,3)
+            array_ID_nine = np.ma.masked_equal(array_ID_nine, 0)
+            stationID_mean = np.ma.mean(array_ID_nine)
+            # stationID_mean = np.nanmean(array_ID_nine)            
+            # set pandas dataframe value
+            df.ix[date][siteID] = stationID_mean
+            #print siteID#, px, py, stationID_mean, df.ix[date][siteID]
+        except Exception, e:
+            print e, i, feat.GetFID()
+            continue            
+            
+# save dataframe to pick so it can be loaded if necessary
+df.to_pickle(r'D:\Data\NDAI_VHI_GROUNDTRUTH//RS_NVAI_2003_2013.pkl')
+#df = pd.read_pickle(r'D:\Data\NDAI_VHI_GROUNDTRUTH//remote_sensing_2003_2013.pkl')             
+
+
+# In[ ]:
+
+# NTAI NTAI START
+# get index from tif files
+files = listall(r'D:\Data\NTAI_2003_2013', extension='.tif')
+index = []
+for i in files:
+    # get date
+    year = int(i[-12:-8])
+    doy = int(i[-7:-4])
+    date = datetime(year, 1, 1) + timedelta(doy - 1)
+    date = np.datetime64(date)
+    date = pd.Timestamp(np.datetime_as_string(date))
+    index.append(date)
+index = np.array(index)
+
+print files[0], index[0]
+# get columns from shp file
+shp_filename = r'D:\Data\NDAI_VHI_GROUNDTRUTH\groundtruth_2003_2013.shp'
+siteID_list = []
+ds = ogr.Open(shp_filename)
+lyr = ds.GetLayer()
+for feat in lyr:
+    # get siteID from Field
+    siteID = int(feat.GetField('Site_ID'))
+    siteID_list.append(siteID)
+siteID_array = np.array(siteID_list)
+columns = np.unique(siteID_array).astype(str)   
+
+# create empty DataFrame
+df = pd.DataFrame(index=index, columns=columns)
+df_shp = pd.DataFrame(index=index, columns=columns)
+
+for i in files:
+    # load raster GeoTransform, RasterBand    
+    try:
+        src_ds = gdal.Open(i) 
+        gt = src_ds.GetGeoTransform()
+        rb = src_ds.GetRasterBand(1)
+
+        # get date
+        year = int(i[-12:-8])
+        doy = int(i[-7:-4])
+        date = datetime(year, 1, 1) + timedelta(doy - 1)
+        date = np.datetime64(date)
+        date = pd.Timestamp(np.datetime_as_string(date))
+        print date
+    except Exception, e:
+        print e, i
+        continue
+        
+    ds = ogr.Open(shp_filename)
+    lyr = ds.GetLayer()
+    for feat in lyr:
+        try:
+            # get siteID from Field
+
+            siteID = str(int(feat.GetField('Site_ID')))
+            #if siteID == '50353':
+
+            # get lon/lat from GeometryRef
+            geom = feat.GetGeometryRef()
+            mx,my=geom.GetX(), geom.GetY()  #coord in map units
+
+            # convert from map to pixel coordinates.    
+            px = int((mx - gt[0]) / gt[1]) #x pixel
+            py = int((my - gt[3]) / gt[5]) #y pixel
+
+            # get mean of nine pixels surround station ID
+            array_ID_nine = rb.ReadAsArray(px-1,py-1,3,3)
+            array_ID_nine = np.ma.masked_equal(array_ID_nine, 0)
+            stationID_mean = np.ma.mean(array_ID_nine)
+            # stationID_mean = np.nanmean(array_ID_nine)            
+            # set pandas dataframe value
+            df.ix[date][siteID] = stationID_mean
+            #print siteID#, px, py, stationID_mean, df.ix[date][siteID]
+        except Exception, e:
+            print e, i, feat.GetFID()
+            continue            
+            
+# save dataframe to pick so it can be loaded if necessary
+df.to_pickle(r'D:\Data\NDAI_VHI_GROUNDTRUTH//RS_NTAI_2003_2013.pkl')
+#df = pd.read_pickle(r'D:\Data\NDAI_VHI_GROUNDTRUTH//remote_sensing_2003_2013.pkl')             
+
+
+# In[ ]:
+
+# VCI VCI START
+# get index from tif files
+files = listall(r'D:\Data\VCI_2003_2013', extension='.tif')
+index = []
+for i in files:
+    # get date
+    year = int(i[-12:-8])
+    doy = int(i[-7:-4])
+    date = datetime(year, 1, 1) + timedelta(doy - 1)
+    date = np.datetime64(date)
+    date = pd.Timestamp(np.datetime_as_string(date))
+    index.append(date)
+index = np.array(index)
+
+print files[0], index[0]
+# get columns from shp file
+shp_filename = r'D:\Data\NDAI_VHI_GROUNDTRUTH\groundtruth_2003_2013.shp'
+siteID_list = []
+ds = ogr.Open(shp_filename)
+lyr = ds.GetLayer()
+for feat in lyr:
+    # get siteID from Field
+    siteID = int(feat.GetField('Site_ID'))
+    siteID_list.append(siteID)
+siteID_array = np.array(siteID_list)
+columns = np.unique(siteID_array).astype(str)   
+
+# create empty DataFrame
+df = pd.DataFrame(index=index, columns=columns)
+df_shp = pd.DataFrame(index=index, columns=columns)
+
+for i in files:
+    # load raster GeoTransform, RasterBand    
+    try:
+        src_ds = gdal.Open(i) 
+        gt = src_ds.GetGeoTransform()
+        rb = src_ds.GetRasterBand(1)
+
+        # get date
+        year = int(i[-12:-8])
+        doy = int(i[-7:-4])
+        date = datetime(year, 1, 1) + timedelta(doy - 1)
+        date = np.datetime64(date)
+        date = pd.Timestamp(np.datetime_as_string(date))
+        print date
+    except Exception, e:
+        print e, i
+        continue
+        
+    ds = ogr.Open(shp_filename)
+    lyr = ds.GetLayer()
+    for feat in lyr:
+        try:
+            # get siteID from Field
+
+            siteID = str(int(feat.GetField('Site_ID')))
+            #if siteID == '50353':
+
+            # get lon/lat from GeometryRef
+            geom = feat.GetGeometryRef()
+            mx,my=geom.GetX(), geom.GetY()  #coord in map units
+
+            # convert from map to pixel coordinates.    
+            px = int((mx - gt[0]) / gt[1]) #x pixel
+            py = int((my - gt[3]) / gt[5]) #y pixel
+
+            # get mean of nine pixels surround station ID
+            array_ID_nine = rb.ReadAsArray(px-1,py-1,3,3)
+            array_ID_nine = np.ma.masked_equal(array_ID_nine, 0)
+            stationID_mean = np.ma.mean(array_ID_nine)
+            # stationID_mean = np.nanmean(array_ID_nine)            
+            # set pandas dataframe value
+            df.ix[date][siteID] = stationID_mean
+            #print siteID#, px, py, stationID_mean, df.ix[date][siteID]
+        except Exception, e:
+            #print e, i, feat.GetFID()
+            continue            
+            
+# save dataframe to pick so it can be loaded if necessary
+df.to_pickle(r'D:\Data\NDAI_VHI_GROUNDTRUTH//RS_VCI_2003_2013.pkl')
+#df = pd.read_pickle(r'D:\Data\NDAI_VHI_GROUNDTRUTH//remote_sensing_2003_2013.pkl')             
+
+
+# In[ ]:
+
+# TCI TCI START
+# get index from tif files
+files = listall(r'D:\Data\TCI_2003_2013', extension='.tif')
+index = []
+for i in files:
+    # get date
+    year = int(i[-12:-8])
+    doy = int(i[-7:-4])
+    date = datetime(year, 1, 1) + timedelta(doy - 1)
+    date = np.datetime64(date)
+    date = pd.Timestamp(np.datetime_as_string(date))
+    index.append(date)
+index = np.array(index)
+
+print files[0], index[0]
+# get columns from shp file
+shp_filename = r'D:\Data\NDAI_VHI_GROUNDTRUTH\groundtruth_2003_2013.shp'
+siteID_list = []
+ds = ogr.Open(shp_filename)
+lyr = ds.GetLayer()
+for feat in lyr:
+    # get siteID from Field
+    siteID = int(feat.GetField('Site_ID'))
+    siteID_list.append(siteID)
+siteID_array = np.array(siteID_list)
+columns = np.unique(siteID_array).astype(str)   
+
+# create empty DataFrame
+df = pd.DataFrame(index=index, columns=columns)
+df_shp = pd.DataFrame(index=index, columns=columns)
+
+for i in files:
+    # load raster GeoTransform, RasterBand    
+    try:
+        src_ds = gdal.Open(i) 
+        gt = src_ds.GetGeoTransform()
+        rb = src_ds.GetRasterBand(1)
+
+        # get date
+        year = int(i[-12:-8])
+        doy = int(i[-7:-4])
+        date = datetime(year, 1, 1) + timedelta(doy - 1)
+        date = np.datetime64(date)
+        date = pd.Timestamp(np.datetime_as_string(date))
+        print date
+    except Exception, e:
+        print e, i
+        continue
+        
+    ds = ogr.Open(shp_filename)
+    lyr = ds.GetLayer()
+    for feat in lyr:
+        try:
+            # get siteID from Field
+
+            siteID = str(int(feat.GetField('Site_ID')))
+            #if siteID == '50353':
+
+            # get lon/lat from GeometryRef
+            geom = feat.GetGeometryRef()
+            mx,my=geom.GetX(), geom.GetY()  #coord in map units
+
+            # convert from map to pixel coordinates.    
+            px = int((mx - gt[0]) / gt[1]) #x pixel
+            py = int((my - gt[3]) / gt[5]) #y pixel
+
+            # get mean of nine pixels surround station ID
+            array_ID_nine = rb.ReadAsArray(px-1,py-1,3,3)
+            array_ID_nine = np.ma.masked_equal(array_ID_nine, 0)
+            stationID_mean = np.ma.mean(array_ID_nine)
+            # stationID_mean = np.nanmean(array_ID_nine)            
+            # set pandas dataframe value
+            df.ix[date][siteID] = stationID_mean
+            #print siteID#, px, py, stationID_mean, df.ix[date][siteID]
+        except Exception, e:
+            #print e, i, feat.GetFID()
+            continue            
+            
+# save dataframe to pick so it can be loaded if necessary
+df.to_pickle(r'D:\Data\NDAI_VHI_GROUNDTRUTH//RS_TCI_2003_2013.pkl')
+#df = pd.read_pickle(r'D:\Data\NDAI_VHI_GROUNDTRUTH//remote_sensing_2003_2013.pkl')             
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
 
 df['50353'].plot()
 
@@ -131,7 +468,7 @@ df['50353'].plot()
 # Following bit is to convert CMA database into similar pandas dataframe scheme as RS data
 
 
-# In[11]:
+# In[ ]:
 
 import calendar
 
@@ -200,7 +537,7 @@ for feat in lyr:
         continue
 
 
-# In[13]:
+# In[ ]:
 
 # save dataframe to pick so it can be loaded if necessary
 #df_shp.to_pickle(r'D:\Data\NDAI_VHI_GROUNDTRUTH//groundtruth_2003_2013.pkl')

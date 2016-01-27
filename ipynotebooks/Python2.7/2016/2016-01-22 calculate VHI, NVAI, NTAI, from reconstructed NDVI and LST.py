@@ -279,7 +279,7 @@ NDVI_doy_mean = np.array(listall(r'J:\MAX_MIN_NDVI_recon_LST_recon\doy_NDVI', va
 # RECALCULATE VCI, TCI, VHI, NVAI, NTAI
 
 
-# In[ ]:
+# In[30]:
 
 for idx, LST_file in enumerate(files_LST): #files_LST
     
