@@ -69,7 +69,7 @@ coastline = cfeature.COASTLINE.scale='50m'
 ax.add_feature(cfeature.COASTLINE,linewidth=0.5, edgecolor='black')
 
 
-# In[8]:
+# In[5]:
 
 import numpy as np
 import matplotlib.colors as mcolors
@@ -114,7 +114,7 @@ def cmap_discretize(cmap, N):
     return mcolors.LinearSegmentedColormap(cmap.name + "_%d"%N, cdict, 1024)
 
 
-# In[9]:
+# In[6]:
 
 cb_NDAI = make_colormap([c('#993406'), c('#D95E0E'),0.1, c('#D95E0E'), c('#FE9829'),0.2, 
                          c('#FE9829'), c('#FFD98E'),0.3, c('#FFD98E'), c('#FEFFD3'),0.4, 
@@ -123,7 +123,7 @@ cb_NDAI = make_colormap([c('#993406'), c('#D95E0E'),0.1, c('#D95E0E'), c('#FE982
                          c('#6ECCDD'), c('#3553A4'),0.9, c('#3553A4')])
 
 
-# In[10]:
+# In[7]:
 
 # ticks of classes
 #bounds = [0.,82.875,95.625,108.375,127.5,146.625,159.375,172.125,255.]
@@ -134,7 +134,7 @@ cmap = cmap_discretize(cb_NDAI,8)
 norm = mcolors.BoundaryNorm(bounds, cmap.N)
 
 
-# In[11]:
+# In[8]:
 
 from osgeo import gdal
 import numpy as np
@@ -164,7 +164,7 @@ gridlons = np.mgrid[xmin:xmax+xres:xres]
 gridlats = np.mgrid[ymax+yres:ymin:yres]
 
 
-# In[14]:
+# In[9]:
 
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
@@ -199,9 +199,61 @@ im = plt.pcolormesh(gridlons, gridlats, data_ma, transform=ccrs.PlateCarree(), n
 cb = plt.colorbar(im, fraction=0.0476, pad=0.04, ticks=bounds,norm=norm, orientation='horizontal')
 cb.set_label('Normalized Drought Anomaly Index')
 cb.set_ticklabels(ticks)
-plt.savefig(r'D:\Downloads\Mattijn@Zhou\GlobalDroughtProvince//TEST_1.png', dpi=400)
-plt.clf()
-plt.close()
+#plt.savefig(r'D:\Downloads\Mattijn@Zhou\GlobalDroughtProvince//TEST_1.png', dpi=400)
+#plt.clf()
+#plt.close()
+plt.show()
+
+
+# In[15]:
+
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
+import matplotlib.ticker as mticker
+import cartopy.feature as cfeature
+
+
+plt.figure(figsize=(41.53683777162, 18))
+#plt.figure(figsize=(13.84561259054,6))
+ax = plt.axes(projection=ccrs.InterruptedGoodeHomolosine())
+#ax.background_patch.set_facecolor('none')
+ax.set_extent([-179,179,-60,80])
+ax.outline_patch.set_edgecolor('gray')
+ax.outline_patch.set_linewidth(1)
+ax.outline_patch.set_linestyle(':')
+#ax.coastlines(resolution='10m')
+coastline = cfeature.COASTLINE.scale='50m'
+borders = cfeature.BORDERS.scale='50m'
+#land = cfeature.LAND.scale='50m'
+#ax.add_feature(cfeature.LAND, facecolor='gainsboro')  
+ax.add_feature(cfeature.COASTLINE,linewidth=0.5, edgecolor='black',zorder=1)
+ax.add_feature(cfeature.BORDERS, linewidth=0.5, edgecolor='black',zorder=1)  
+
+#ax.add_feature(cfeature.RIVERS, linewidth=0.2, edgecolor='blue') 
+gl = ax.gridlines(linewidth=1, color='gray', linestyle=':')
+gl.xlocator = mticker.FixedLocator(range(-180,190,20))
+gl.ylocator = mticker.FixedLocator(range(-60,90,10))
+gl.xformatter = LONGITUDE_FORMATTER
+gl.yformatter = LATITUDE_FORMATTER
+im = plt.pcolormesh(gridlons, gridlats, data_ma, transform=ccrs.PlateCarree(), norm=norm, cmap=cmap, vmin=-1, vmax=1,zorder=0)
+cb = plt.colorbar(im, fraction=0.0476, pad=0.04, ticks=bounds,norm=norm, orientation='horizontal')
+cb.set_label('Normalized Drought Anomaly Index')
+cb.set_ticklabels(ticks)
+#plt.savefig(r'D:\Downloads\Mattijn@Zhou\GlobalDroughtProvince//TEST_1.png', dpi=400)
+#plt.clf()
+#plt.close()
+plt.show()
+
+
+# In[16]:
+
+data_ma.shape
+
+
+# In[17]:
+
+data_ma
 
 
 # In[ ]:

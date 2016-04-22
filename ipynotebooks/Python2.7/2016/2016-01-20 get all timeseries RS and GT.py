@@ -28,7 +28,7 @@ def listall(RootFolder, varname='',extension='.png'):
     return lists
 
 
-# In[12]:
+# In[ ]:
 
 # VHI VHI START
 # get index from tif files
