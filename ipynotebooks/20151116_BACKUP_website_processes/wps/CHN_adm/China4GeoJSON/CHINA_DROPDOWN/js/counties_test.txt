@@ -1,4 +1,0 @@
-['0_0_0', ['Anqing', 'Huaining', 'Qianshan', 'Susong', 'Taihu', 'Tongcheng', 'Wangjiang', 'Yuexi', 'Zongyang']]
-['0_0_1', ['Bengbu', 'Guzhen', 'Huaiyuan', 'Wuhe']]
-['0_0_2', ['Boxian', 'Guoyang', 'Lixin', 'Mengcheng']]
-['0_0_3', ['Chao', 'Hanshan', 'He', 'Lujiang', 'Wuwei']]

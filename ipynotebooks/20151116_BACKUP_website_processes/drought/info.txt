@@ -1,4 +1,0 @@
-To style the Mapserver datafile use the UMN.py file. It is stored in this folder:
-/usr/local/lib/python2.7/dist-packages/pywps-3.2.1-py2.7.egg/pywps/Wps/Execute
-
-
